@@ -1,150 +1,176 @@
-const envelope =
-    document.getElementById("envelope");
+const envelope = document.getElementById("envelope");
+const letterScreen = document.getElementById("letterScreen");
+const main = document.getElementById("main");
 
-const letterScreen =
-    document.getElementById("letterScreen");
+const photoFrame = document.getElementById("photoFrame");
+const photoArea = document.getElementById("photoArea");
+const rotatePhotoButton = document.getElementById("rotatePhotoButton");
+const photoBurst = document.getElementById("photoBurst");
+const photoStatus = document.getElementById("photoStatus");
 
-const main =
-    document.getElementById("main");
+const message = document.getElementById("message");
+const animationButtonBox = document.getElementById("animationButtonBox");
 
-const kissButton =
-    document.getElementById("kissButton");
+const kissButton = document.getElementById("kissButton");
+const characters = document.getElementById("characters");
+const statusText = document.getElementById("status");
 
-const characters =
-    document.getElementById("characters");
-
-const statusText =
-    document.getElementById("status");
-
-
-let sudahDibuka = false;
-let sedangAnimasi = false;
+let opened = false;
+let photoRotating = false;
+let animationRunning = false;
 
 
-/* =====================
-   BUKA SURAT
-===================== */
+/* BUKA SURAT */
 
-function openLetter() {
+envelope.addEventListener("click", function () {
 
-    if (sudahDibuka) {
-        return;
-    }
+    if (opened) return;
 
-    sudahDibuka = true;
+    opened = true;
 
     envelope.classList.add("open");
-
 
     setTimeout(function () {
 
         letterScreen.style.opacity = "0";
-
-        letterScreen.style.visibility =
-            "hidden";
+        letterScreen.style.visibility = "hidden";
 
         main.classList.add("show");
 
-    }, 1200);
-}
+    }, 1000);
+
+});
 
 
-envelope.addEventListener(
-    "click",
-    openLetter
-);
+/* PUTAR FOTO */
+
+rotatePhotoButton.addEventListener("click", function () {
+
+    if (photoRotating) return;
+
+    photoRotating = true;
+
+    rotatePhotoButton.disabled = true;
+
+    rotatePhotoButton.textContent = "❤️ Fotomu sedang berputar...";
+
+    photoStatus.textContent = "Lihat baik-baik ya... 🥰";
 
 
-/* =====================
-   ANIMASI CIUMAN
-===================== */
+    /* RESET ANIMASI */
 
-kissButton.addEventListener(
-    "click",
-    function () {
+    photoFrame.classList.remove("spin");
+    photoBurst.classList.remove("active");
 
-        if (sedangAnimasi) {
-            return;
-        }
-
-        sedangAnimasi = true;
+    void photoFrame.offsetWidth;
 
 
-        /* Panda dan beruang muncul */
-        characters.classList.add(
-            "revealed"
-        );
+    /* FOTO BERPUTAR */
+
+    photoFrame.classList.add("spin");
 
 
-        /* Reset animasi */
-        characters.classList.remove(
-            "kissing"
-        );
+    /* LOVE KELUAR */
 
-        void characters.offsetWidth;
-
-
-        kissButton.disabled = true;
-
-        kissButton.textContent =
-            "🧸🐼 Bersiap... ❤️";
-
-        statusText.textContent =
-            "Mereka mulai mendekat... 🥰";
+    setTimeout(function () {
+        photoBurst.classList.add("active");
+    }, 300);
 
 
-        /* Mulai mendekat */
-        setTimeout(function () {
+    /* SETELAH SELESAI */
 
-            characters.classList.add(
-                "kissing"
-            );
+    setTimeout(function () {
 
-            kissButton.textContent =
-                "💋 Mereka berciuman...";
+        photoStatus.textContent = "Nah... sekarang lanjut baca ya ❤️";
 
-            statusText.textContent =
-                "Pelan-pelan mendekat... 💗";
+        message.classList.add("show");
 
-        }, 650);
+    }, 1700);
 
 
-        /* Ciuman */
-        setTimeout(function () {
+    /* TOMBOL ANIMASI MUNCUL */
 
-            statusText.textContent =
-                "Muachhh! 💋❤️";
+    setTimeout(function () {
 
-        }, 1600);
+        animationButtonBox.classList.add("show");
+
+        rotatePhotoButton.disabled = false;
+
+        rotatePhotoButton.textContent = "🔄 Putar Lagi";
+
+        photoRotating = false;
+
+    }, 2500);
+
+});
 
 
-        /* Love */
-        setTimeout(function () {
+/* ANIMASI PANDA DAN BERUANG */
 
-            statusText.textContent =
-                "❤️💕💗 Love berhamburan!";
+kissButton.addEventListener("click", function () {
 
-        }, 2100);
+    if (animationRunning) return;
+
+    animationRunning = true;
+
+    characters.classList.add("revealed");
+
+    characters.classList.remove("kissing");
+
+    void characters.offsetWidth;
+
+    kissButton.disabled = true;
+
+    kissButton.textContent = "🧸🐼 Tunggu sebentar...";
+
+    statusText.textContent = "Mereka mulai mendekat... 🥰";
 
 
-        /* Selesai */
-        setTimeout(function () {
+    /* MULAI MENDEKAT */
 
-            characters.classList.remove(
-                "kissing"
-            );
+    setTimeout(function () {
 
-            statusText.textContent =
-                "Selesai 🥰";
+        characters.classList.add("kissing");
 
-            kissButton.disabled = false;
+        kissButton.textContent = "💋 Mereka berciuman...";
 
-            kissButton.textContent =
-                "🧸💗🐼 Klik lagi";
+        statusText.textContent = "Pelan-pelan mendekat... ❤️";
 
-            sedangAnimasi = false;
+    }, 500);
 
-        }, 3600);
 
-    }
-);
+    /* CIUMAN */
+
+    setTimeout(function () {
+
+        statusText.textContent = "Muachhh! 💋❤️";
+
+    }, 1500);
+
+
+    /* LOVE BERTERBANGAN */
+
+    setTimeout(function () {
+
+        statusText.textContent = "❤️💕💗 Love berhamburan!";
+
+    }, 1900);
+
+
+    /* SELESAI */
+
+    setTimeout(function () {
+
+        characters.classList.remove("kissing");
+
+        statusText.textContent = "Mereka saling suka ❤️";
+
+        kissButton.disabled = false;
+
+        kissButton.textContent = "🧸💗🐼 Klik lagi";
+
+        animationRunning = false;
+
+    }, 3300);
+
+});
