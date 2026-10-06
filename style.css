@@ -1,776 +1,249 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ffe4ec, #fff7fa);
-    color: #5a3040;
-    overflow-x: hidden;
-}
-
-#letterScreen {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #ffe8ef;
-    z-index: 10;
-    transition: 1s;
-}
-
-.envelope {
-    width: 320px;
-    height: 220px;
-    position: relative;
-    cursor: pointer;
-}
-
-.env-body {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #f5a9bd;
-    border-radius: 8px;
-    box-shadow: 0 15px 35px #0002;
-}
-
-.letter {
-    position: absolute;
-    width: 85%;
-    height: 180px;
-    left: 7.5%;
-    top: 15px;
-    background: white;
-    text-align: center;
-    padding: 25px 15px;
-    border-radius: 5px;
-    transition: 1s;
-    z-index: 1;
-}
-
-.letter h2 {
-    color: #e75d86;
-    margin-bottom: 15px;
-}
-
-.letter p {
-    margin-bottom: 20px;
-}
-
-.env-flap {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 160px solid transparent;
-    border-right: 160px solid transparent;
-    border-top: 110px solid #e98ba5;
-    top: 0;
-    left: 0;
-    transform-origin: top;
-    transition: 1s;
-    z-index: 3;
-}
-
-.envelope.open .env-flap {
-    transform: rotateX(180deg);
-}
-
-.envelope.open .letter {
-    transform: translateY(-100px);
-}
-
-.open-text {
-    position: absolute;
-    bottom: -50px;
-    width: 100%;
-    text-align: center;
-    color: #c94d70;
-    font-weight: bold;
-}
-
-
-/* MAIN */
-
-#main {
-    opacity: 0;
-    visibility: hidden;
-    transition: 1s;
-}
-
-#main.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-.container {
-    max-width: 850px;
-    margin: auto;
-    padding: 50px 20px;
-    text-align: center;
-}
-
-h1 {
-    color: #d94f76;
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    margin-bottom: 35px;
-}
-
-
-/* FOTO */
-
-.photo-area {
-    position: relative;
-    width: 300px;
-    height: 330px;
-    margin: auto;
-}
-
-.photo-frame {
-    position: absolute;
-    width: 230px;
-    height: 280px;
-    left: 35px;
-    top: 20px;
-    padding: 8px;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 15px 30px #0002;
-    z-index: 2;
-    transform: rotate(0deg);
-}
-
-.photo-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-
-/* PUTAR FOTO */
-
-.photo-frame.spin {
-    animation: rotatePhoto 1.6s cubic-bezier(.25,.8,.25,1);
-}
-
-@keyframes rotatePhoto {
-
-    0% {
-        transform: rotate(0deg) scale(1);
-    }
-
-    40% {
-        transform: rotate(180deg) scale(1.08);
-    }
-
-    75% {
-        transform: rotate(320deg) scale(1.05);
-    }
-
-    100% {
-        transform: rotate(360deg) scale(1);
-    }
-}
-
-
-/* LOVE DI FOTO */
-
-.photo-hearts span {
-    position: absolute;
-    font-size: 22px;
-    z-index: 3;
-    animation: floatingHeart 2.5s ease-in-out infinite;
-}
-
-.photo-hearts span:nth-child(1) {
-    left: 5px;
-    top: 50px;
-}
-
-.photo-hearts span:nth-child(2) {
-    right: 5px;
-    top: 80px;
-}
-
-.photo-hearts span:nth-child(3) {
-    left: 15px;
-    bottom: 70px;
-}
-
-.photo-hearts span:nth-child(4) {
-    right: 10px;
-    bottom: 50px;
-}
-
-.photo-hearts span:nth-child(5) {
-    left: 45px;
-    top: 0;
-}
-
-.photo-hearts span:nth-child(6) {
-    right: 45px;
-    top: 5px;
-}
-
-@keyframes floatingHeart {
-    50% {
-        transform: translateY(-10px) scale(1.15);
-    }
-}
-
-
-/* LOVE MELEDAK SAAT DIPUTAR */
-
-.photo-burst {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 5;
-}
-
-.photo-burst span {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    font-size: 25px;
-    opacity: 0;
-}
-
-.photo-burst.active span {
-    animation: burstHeart 1.3s ease-out forwards;
-}
-
-.photo-burst span:nth-child(1) {
-    --x: -130px;
-    --y: -120px;
-}
-
-.photo-burst span:nth-child(2) {
-    --x: 120px;
-    --y: -100px;
-}
-
-.photo-burst span:nth-child(3) {
-    --x: -145px;
-    --y: 30px;
-}
-
-.photo-burst span:nth-child(4) {
-    --x: 140px;
-    --y: 40px;
-}
-
-.photo-burst span:nth-child(5) {
-    --x: -90px;
-    --y: 120px;
-}
-
-.photo-burst span:nth-child(6) {
-    --x: 90px;
-    --y: 120px;
-}
-
-.photo-burst span:nth-child(7) {
-    --x: 0px;
-    --y: -150px;
-}
-
-.photo-burst span:nth-child(8) {
-    --x: 0px;
-    --y: 150px;
-}
-
-@keyframes burstHeart {
-
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(.2);
-    }
-
-    20% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-        transform:
-            translate(
-                calc(-50% + var(--x)),
-                calc(-50% + var(--y))
-            )
-            scale(1.2);
-    }
-}
-
-
-/* TOMBOL PUTAR */
-
-.rotate-box {
-    margin-top: 5px;
-}
-
-.rotate-title {
-    font-size: 20px;
-    font-weight: bold;
-    color: #d94f76;
-}
-
-.rotate-subtitle {
-    margin: 8px 0 15px;
-    color: #805060;
-}
-
-#rotatePhotoButton,
-#kissButton {
-    border: none;
-    background: #e85d86;
-    color: white;
-    padding: 13px 25px;
-    border-radius: 30px;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 7px 15px #0002;
-    transition: .3s;
-}
-
-#rotatePhotoButton:hover,
-#kissButton:hover {
-    transform: translateY(-3px);
-    background: #d94b76;
-}
-
-#rotatePhotoButton:disabled {
-    opacity: .6;
-    cursor: wait;
-}
-
-#photoStatus {
-    margin-top: 10px;
-    min-height: 22px;
-}
-
-
-/* KATA-KATA */
-
-.message {
-    max-width: 650px;
-    margin: 35px auto 0;
-    background: #ffffffcc;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px #0001;
-
-    opacity: 0;
-    transform: translateY(30px);
-    transition: 1s;
-}
-
-.message.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.message h2 {
-    color: #d94f76;
-    margin-bottom: 20px;
-}
-
-.message p {
-    line-height: 1.8;
-    margin-bottom: 15px;
-}
-
-.last-message {
-    font-weight: bold;
-    color: #d94f76;
-}
-
-
-/* TOMBOL ANIMASI */
-
-#animationButtonBox {
-    margin-top: 25px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: 1s;
-}
-
-#animationButtonBox.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-/* STATUS */
-
-#status {
-    margin-top: 15px;
-    min-height: 25px;
-    font-weight: bold;
-    color: #d94f76;
-}
-
-
-/* KARAKTER */
-
-#characters {
-    position: relative;
-    height: 350px;
-    margin-top: 20px;
-    overflow: hidden;
-
-    opacity: 0;
-    visibility: hidden;
-}
-
-#characters.revealed {
-    opacity: 1;
-    visibility: visible;
-}
-
-
-/* LOVE BESAR */
-
-.big-love {
-    position: absolute;
-    left: 50%;
-    top: 25px;
-    transform: translateX(-50%) scale(0);
-    font-size: 45px;
-    z-index: 5;
-}
-
-#characters.kissing .big-love {
-    animation: bigLove 1s ease forwards;
-}
-
-@keyframes bigLove {
-    0% {
-        transform: translateX(-50%) scale(0);
-    }
-
-    50% {
-        transform: translateX(-50%) scale(1.5);
-    }
-
-    100% {
-        transform: translateX(-50%) scale(1);
-    }
-}
-
-
-/* KARAKTER DASAR */
-
-.character {
-    position: absolute;
-    bottom: 30px;
-    width: 150px;
-    height: 260px;
-    transition: 1.8s cubic-bezier(.2,.8,.2,1);
-}
-
-.character.bear {
-    left: 8%;
-}
-
-.character.panda {
-    right: 8%;
-}
-
-
-/* KEPALA */
-
-.character .head {
-    position: absolute;
-    width: 115px;
-    height: 105px;
-    left: 18px;
-    top: 10px;
-    border-radius: 50%;
-    background: #b97855;
-    z-index: 2;
-}
-
-.panda .head {
-    background: white;
-}
-
-.character .ear {
-    position: absolute;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    top: 0;
-    background: #7c4a36;
-}
-
-.panda .ear {
-    background: #222;
-}
-
-.character .ear.left {
-    left: 5px;
-}
-
-.character .ear.right {
-    right: 5px;
-}
-
-
-/* MATA */
-
-.character .eye {
-    position: absolute;
-    width: 15px;
-    height: 20px;
-    border-radius: 50%;
-    background: #222;
-    top: 40px;
-}
-
-.character .eye.left {
-    left: 28px;
-}
-
-.character .eye.right {
-    right: 28px;
-}
-
-.panda .eye {
-    background: #222;
-    width: 23px;
-    height: 30px;
-    transform: rotate(35deg);
-}
-
-.panda .eye.left {
-    left: 22px;
-}
-
-.panda .eye.right {
-    right: 22px;
-    transform: rotate(-35deg);
-}
-
-
-/* HIDUNG */
-
-.character .nose {
-    position: absolute;
-    width: 20px;
-    height: 15px;
-    background: #222;
-    border-radius: 50%;
-    left: 48px;
-    top: 62px;
-}
-
-.character .mouth {
-    position: absolute;
-    width: 25px;
-    height: 12px;
-    border-bottom: 3px solid #222;
-    left: 45px;
-    top: 72px;
-}
-
-
-/* BADAN */
-
-.character .body {
-    position: absolute;
-    width: 110px;
-    height: 130px;
-    left: 20px;
-    top: 100px;
-    border-radius: 45% 45% 35% 35%;
-    background: #b97855;
-}
-
-.panda .body {
-    background: white;
-}
-
-
-/* TANGAN */
-
-.character .arm {
-    position: absolute;
-    width: 35px;
-    height: 100px;
-    border-radius: 30px;
-    background: #b97855;
-    top: 115px;
-    transition: 1.8s;
-}
-
-.panda .arm {
-    background: #222;
-}
-
-.character .arm.left {
-    left: 5px;
-    transform: rotate(20deg);
-}
-
-.character .arm.right {
-    right: 5px;
-    transform: rotate(-20deg);
-}
-
-
-/* KAKI */
-
-.character .leg {
-    position: absolute;
-    width: 42px;
-    height: 75px;
-    border-radius: 30px;
-    background: #b97855;
-    bottom: 0;
-}
-
-.panda .leg {
-    background: #222;
-}
-
-.character .leg.left {
-    left: 25px;
-}
-
-.character .leg.right {
-    right: 25px;
-}
-
-
-/* GERAK MENDEKAT */
-
-#characters.kissing .bear {
-    transform: translateX(120px);
-}
-
-#characters.kissing .panda {
-    transform: translateX(-120px);
-}
-
-#characters.kissing .bear .arm.right {
-    transform: rotate(-55deg);
-}
-
-#characters.kissing .panda .arm.left {
-    transform: rotate(55deg);
-}
-
-
-/* LOVE BURST */
-
-.love-burst {
-    position: absolute;
-    left: 50%;
-    top: 45%;
-    transform: translate(-50%, -50%);
-}
-
-.love-burst span {
-    position: absolute;
-    font-size: 25px;
-    opacity: 0;
-}
-
-#characters.kissing .love-burst span {
-    animation: heartFly 1.5s ease-out forwards;
-}
-
-@keyframes heartFly {
-
-    0% {
-        opacity: 0;
-        transform: translate(0, 0) scale(.3);
-    }
-
-    30% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-        transform: translate(
-            calc((var(--randomX, 1)) * 100px),
-            calc((var(--randomY, 1)) * 100px)
-        ) scale(1.3);
-    }
-}
-
-.love-burst span:nth-child(1) {
-    transform: translate(-100px, -80px);
-}
-
-.love-burst span:nth-child(2) {
-    transform: translate(100px, -80px);
-}
-
-.love-burst span:nth-child(3) {
-    transform: translate(-130px, 20px);
-}
-
-.love-burst span:nth-child(4) {
-    transform: translate(130px, 20px);
-}
-
-.love-burst span:nth-child(5) {
-    transform: translate(-70px, 100px);
-}
-
-.love-burst span:nth-child(6) {
-    transform: translate(70px, 100px);
-}
-
-
-.bottom-text {
-    margin-top: 20px;
-    color: #c94d70;
-}
-
-
-/* HP */
-
-@media (max-width: 600px) {
-
-    .container {
-        padding: 35px 15px;
-    }
-
-    .photo-area {
-        transform: scale(.9);
-        margin-bottom: -15px;
-    }
-
-    .message {
-        padding: 22px;
-    }
-
-    #characters {
-        height: 300px;
-    }
-
-    .character {
-        transform: scale(.75);
-        transform-origin: bottom center;
-    }
-
-    #characters.kissing .bear {
-        transform: translateX(80px) scale(.75);
-    }
-
-    #characters.kissing .panda {
-        transform: translateX(-80px) scale(.75);
-    }
-
-}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Kamu ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HALAMAN SURAT -->
+    <section id="letterScreen">
+
+        <div class="envelope" id="envelope">
+
+            <div class="envelope-back"></div>
+
+            <div class="letter">
+                <h2>Untuk Kamu ❤️</h2>
+                <p>Ada sesuatu yang ingin aku sampaikan...</p>
+                <strong>💌 Buka suratnya</strong>
+            </div>
+
+            <div class="envelope-front"></div>
+            <div class="envelope-flap"></div>
+
+            <p class="open-text">Klik suratnya ❤️</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- HALAMAN UTAMA -->
+    <main id="main">
+
+        <div class="container">
+
+            <h1>Untuk Kamu ❤️</h1>
+
+            <p class="subtitle">
+                Ada sesuatu kecil yang ingin aku sampaikan kepadamu...
+            </p>
+
+
+            <!-- FOTO -->
+            <section class="photo-section">
+
+                <div class="photo-area" id="photoArea">
+
+                    <div class="photo-frame" id="photoFrame">
+                        <img src="foto-dia.jpeg" alt="Foto orang spesial">
+                    </div>
+
+                    <div class="floating-hearts">
+
+                        <span>❤️</span>
+                        <span>💕</span>
+                        <span>💗</span>
+                        <span>💖</span>
+                        <span>❤️</span>
+                        <span>💕</span>
+
+                    </div>
+
+                    <!-- LOVE SAAT FOTO DIPUTAR -->
+                    <div class="photo-burst" id="photoBurst">
+
+                        <span>❤️</span>
+                        <span>💕</span>
+                        <span>💗</span>
+                        <span>💖</span>
+                        <span>💓</span>
+                        <span>💞</span>
+                        <span>❤️</span>
+                        <span>💕</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="rotate-area">
+
+                    <h3>💕 Coba putar fotonya dulu... 💕</h3>
+
+                    <p>
+                        Tekan tombol di bawah dan lihat apa yang terjadi ❤️
+                    </p>
+
+                    <button id="rotatePhotoButton">
+                        🔄 Putar Foto
+                    </button>
+
+                    <span id="photoStatus"></span>
+
+                </div>
+
+            </section>
+
+
+            <!-- PESAN -->
+            <section id="message" class="message">
+
+                <h2>💌 Untuk Kamu</h2>
+
+                <p>
+                    Aku mungkin nggak selalu pandai merangkai kata,
+                    tapi ada satu hal yang ingin aku sampaikan.
+                </p>
+
+                <p>
+                    Terima kasih sudah hadir dan membuat hari-hari
+                    biasa terasa lebih indah.
+                </p>
+
+                <p>
+                    Aku suka caramu menjadi dirimu sendiri.
+                    Kamu nggak perlu menjadi orang lain untuk terlihat spesial.
+                </p>
+
+                <p>
+                    Tetaplah menjadi kamu yang aku kenal,
+                    karena justru itu yang membuat kamu berbeda. ❤️
+                </p>
+
+                <p class="last-message">
+                    Semoga senyum kamu selalu ada,
+                    dan semoga aku bisa menjadi salah satu alasan
+                    di balik senyum kamu. ❤️
+                </p>
+
+            </section>
+
+
+            <!-- TOMBOL ANIMASI -->
+            <div id="animationButtonBox">
+
+                <button id="kissButton">
+                    🧸💗🐼 Lihat sesuatu yang lucu
+                </button>
+
+            </div>
+
+            <p id="status"></p>
+
+
+            <!-- AREA PANDA DAN BERUANG -->
+            <section id="characters">
+
+                <div class="scene-heart">❤️</div>
+
+                <!-- BERUANG -->
+                <div class="character bear">
+
+                    <div class="ear ear-left"></div>
+                    <div class="ear ear-right"></div>
+
+                    <div class="head">
+
+                        <div class="eye eye-left"></div>
+                        <div class="eye eye-right"></div>
+
+                        <div class="muzzle"></div>
+                        <div class="nose"></div>
+
+                        <div class="mouth"></div>
+
+                    </div>
+
+                    <div class="body">
+
+                        <div class="belly"></div>
+
+                    </div>
+
+                    <div class="arm arm-left"></div>
+                    <div class="arm arm-right"></div>
+
+                    <div class="leg leg-left"></div>
+                    <div class="leg leg-right"></div>
+
+                </div>
+
+
+                <!-- PANDA -->
+                <div class="character panda">
+
+                    <div class="ear ear-left"></div>
+                    <div class="ear ear-right"></div>
+
+                    <div class="head">
+
+                        <div class="eye eye-left"></div>
+                        <div class="eye eye-right"></div>
+
+                        <div class="muzzle"></div>
+                        <div class="nose"></div>
+
+                        <div class="mouth"></div>
+
+                    </div>
+
+                    <div class="body">
+
+                        <div class="belly"></div>
+
+                    </div>
+
+                    <div class="arm arm-left"></div>
+                    <div class="arm arm-right"></div>
+
+                    <div class="leg leg-left"></div>
+                    <div class="leg leg-right"></div>
+
+                </div>
+
+
+                <!-- LOVE SETELAH CIUM -->
+                <div class="kiss-hearts">
+
+                    <span>❤️</span>
+                    <span>💕</span>
+                    <span>💗</span>
+                    <span>💖</span>
+                    <span>💓</span>
+                    <span>💞</span>
+                    <span>❤️</span>
+                    <span>💕</span>
+
+                </div>
+
+            </section>
+
+
+            <p class="bottom-text">
+                🧸 Beruang ❤️ Panda 🐼
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
