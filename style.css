@@ -1,1204 +1,776 @@
 * {
     box-sizing: border-box;
-}
-
-html,
-body {
     margin: 0;
     padding: 0;
-    min-height: 100%;
 }
 
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ffdce9, #fff5f8);
-    color: #71344f;
+    background: linear-gradient(135deg, #ffe4ec, #fff7fa);
+    color: #5a3040;
     overflow-x: hidden;
 }
-
-
-/* =====================
-   SURAT
-===================== */
 
 #letterScreen {
     position: fixed;
     inset: 0;
-
-    z-index: 100;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
-    background: linear-gradient(
-        135deg,
-        #ffb2cb,
-        #ffeaf2
-    );
-
-    transition: 0.8s;
+    background: #ffe8ef;
+    z-index: 10;
+    transition: 1s;
 }
 
 .envelope {
+    width: 320px;
+    height: 220px;
     position: relative;
-
-    width: min(390px, 82vw);
-    height: 280px;
-
     cursor: pointer;
 }
 
 .env-body {
     position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    height: 235px;
-
-    background: #fff8fb;
-
-    border: 2px solid #eca8c0;
-
-    border-radius: 12px;
-}
-
-.env-flap {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 0;
-    height: 0;
-
-    border-left: 195px solid transparent;
-    border-right: 195px solid transparent;
-    border-top: 125px solid #f28eaf;
-
-    z-index: 5;
-
-    transform-origin: top;
-
-    transition: 1s;
-}
-
-.env-left {
-    position: absolute;
-
-    bottom: 0;
-    left: 0;
-
-    border-left: 195px solid #f5a8c1;
-    border-top: 115px solid transparent;
-
-    z-index: 4;
-}
-
-.env-right {
-    position: absolute;
-
-    bottom: 0;
-    right: 0;
-
-    border-right: 195px solid #f5a8c1;
-    border-top: 115px solid transparent;
-
-    z-index: 4;
+    width: 100%;
+    height: 100%;
+    background: #f5a9bd;
+    border-radius: 8px;
+    box-shadow: 0 15px 35px #0002;
 }
 
 .letter {
     position: absolute;
-
-    left: 8%;
-    bottom: 18px;
-
-    width: 84%;
+    width: 85%;
     height: 180px;
-
+    left: 7.5%;
+    top: 15px;
     background: white;
-
-    border-radius: 10px;
-
     text-align: center;
-
     padding: 25px 15px;
-
-    z-index: 2;
-
-    box-shadow: 0 5px 15px rgba(0,0,0,.12);
-
+    border-radius: 5px;
     transition: 1s;
+    z-index: 1;
 }
 
 .letter h2 {
-    margin-top: 0;
-
-    color: #d64070;
+    color: #e75d86;
+    margin-bottom: 15px;
 }
 
 .letter p {
-    font-size: 14px;
+    margin-bottom: 20px;
 }
 
-.open-text {
+.env-flap {
     position: absolute;
-
-    width: 100%;
-
-    bottom: -45px;
-
-    text-align: center;
-
-    color: #a53e63;
-
-    font-weight: bold;
+    width: 0;
+    height: 0;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-top: 110px solid #e98ba5;
+    top: 0;
+    left: 0;
+    transform-origin: top;
+    transition: 1s;
+    z-index: 3;
 }
 
 .envelope.open .env-flap {
     transform: rotateX(180deg);
-
-    z-index: 1;
 }
 
 .envelope.open .letter {
-    transform: translateY(-105px);
+    transform: translateY(-100px);
+}
+
+.open-text {
+    position: absolute;
+    bottom: -50px;
+    width: 100%;
+    text-align: center;
+    color: #c94d70;
+    font-weight: bold;
 }
 
 
-/* =====================
-   MAIN
-===================== */
+/* MAIN */
 
 #main {
-    display: none;
-
-    min-height: 100vh;
-
-    padding: 35px 15px 50px;
-
     opacity: 0;
-
+    visibility: hidden;
     transition: 1s;
 }
 
 #main.show {
-    display: block;
-
     opacity: 1;
+    visibility: visible;
 }
 
 .container {
-    width: min(820px, 100%);
-
+    max-width: 850px;
     margin: auto;
-
+    padding: 50px 20px;
     text-align: center;
 }
 
 h1 {
-    color: #c83968;
-
-    font-size: clamp(
-        30px,
-        6vw,
-        50px
-    );
-
-    margin: 0;
+    color: #d94f76;
+    margin-bottom: 10px;
 }
 
 .subtitle {
-    color: #92506a;
-
-    font-size: 17px;
-
-    margin-bottom: 25px;
+    margin-bottom: 35px;
 }
 
 
-/* =====================
-   FOTO
-===================== */
+/* FOTO */
 
-.photo-box {
+.photo-area {
     position: relative;
-
-    width: min(
-        350px,
-        82vw
-    );
-
+    width: 300px;
+    height: 330px;
     margin: auto;
 }
 
-.photo-box img {
-    width: 100%;
-
-    display: block;
-
-    aspect-ratio: 3 / 4;
-
-    object-fit: cover;
-
-    border: 8px solid white;
-
-    border-radius: 25px;
-
-    box-shadow:
-        0 15px 35px
-        rgba(100, 30, 60, .2);
-}
-
-.heart {
+.photo-frame {
     position: absolute;
-
-    font-size: 30px;
-
-    animation: heartFloat 1.5s infinite;
+    width: 230px;
+    height: 280px;
+    left: 35px;
+    top: 20px;
+    padding: 8px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px #0002;
+    z-index: 2;
+    transform: rotate(0deg);
 }
 
-.heart1 {
-    top: -15px;
-    left: -15px;
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
-.heart2 {
-    top: 40%;
-    right: -20px;
 
-    animation-delay: .3s;
+/* PUTAR FOTO */
+
+.photo-frame.spin {
+    animation: rotatePhoto 1.6s cubic-bezier(.25,.8,.25,1);
 }
 
-.heart3 {
-    bottom: -15px;
-    left: -10px;
+@keyframes rotatePhoto {
 
-    animation-delay: .6s;
-}
-
-@keyframes heartFloat {
-
-    50% {
-        transform:
-            translateY(-10px)
-            scale(1.2);
+    0% {
+        transform: rotate(0deg) scale(1);
     }
 
+    40% {
+        transform: rotate(180deg) scale(1.08);
+    }
+
+    75% {
+        transform: rotate(320deg) scale(1.05);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
 }
 
 
-/* =====================
-   KATA-KATA
-===================== */
+/* LOVE DI FOTO */
+
+.photo-hearts span {
+    position: absolute;
+    font-size: 22px;
+    z-index: 3;
+    animation: floatingHeart 2.5s ease-in-out infinite;
+}
+
+.photo-hearts span:nth-child(1) {
+    left: 5px;
+    top: 50px;
+}
+
+.photo-hearts span:nth-child(2) {
+    right: 5px;
+    top: 80px;
+}
+
+.photo-hearts span:nth-child(3) {
+    left: 15px;
+    bottom: 70px;
+}
+
+.photo-hearts span:nth-child(4) {
+    right: 10px;
+    bottom: 50px;
+}
+
+.photo-hearts span:nth-child(5) {
+    left: 45px;
+    top: 0;
+}
+
+.photo-hearts span:nth-child(6) {
+    right: 45px;
+    top: 5px;
+}
+
+@keyframes floatingHeart {
+    50% {
+        transform: translateY(-10px) scale(1.15);
+    }
+}
+
+
+/* LOVE MELEDAK SAAT DIPUTAR */
+
+.photo-burst {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.photo-burst span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 25px;
+    opacity: 0;
+}
+
+.photo-burst.active span {
+    animation: burstHeart 1.3s ease-out forwards;
+}
+
+.photo-burst span:nth-child(1) {
+    --x: -130px;
+    --y: -120px;
+}
+
+.photo-burst span:nth-child(2) {
+    --x: 120px;
+    --y: -100px;
+}
+
+.photo-burst span:nth-child(3) {
+    --x: -145px;
+    --y: 30px;
+}
+
+.photo-burst span:nth-child(4) {
+    --x: 140px;
+    --y: 40px;
+}
+
+.photo-burst span:nth-child(5) {
+    --x: -90px;
+    --y: 120px;
+}
+
+.photo-burst span:nth-child(6) {
+    --x: 90px;
+    --y: 120px;
+}
+
+.photo-burst span:nth-child(7) {
+    --x: 0px;
+    --y: -150px;
+}
+
+.photo-burst span:nth-child(8) {
+    --x: 0px;
+    --y: 150px;
+}
+
+@keyframes burstHeart {
+
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(.2);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(1.2);
+    }
+}
+
+
+/* TOMBOL PUTAR */
+
+.rotate-box {
+    margin-top: 5px;
+}
+
+.rotate-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #d94f76;
+}
+
+.rotate-subtitle {
+    margin: 8px 0 15px;
+    color: #805060;
+}
+
+#rotatePhotoButton,
+#kissButton {
+    border: none;
+    background: #e85d86;
+    color: white;
+    padding: 13px 25px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 7px 15px #0002;
+    transition: .3s;
+}
+
+#rotatePhotoButton:hover,
+#kissButton:hover {
+    transform: translateY(-3px);
+    background: #d94b76;
+}
+
+#rotatePhotoButton:disabled {
+    opacity: .6;
+    cursor: wait;
+}
+
+#photoStatus {
+    margin-top: 10px;
+    min-height: 22px;
+}
+
+
+/* KATA-KATA */
 
 .message {
-    max-width: 760px;
+    max-width: 650px;
+    margin: 35px auto 0;
+    background: #ffffffcc;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px #0001;
 
-    margin: 30px auto;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1s;
+}
 
-    padding: 22px;
-
-    background:
-        rgba(255,255,255,.82);
-
-    border-radius: 25px;
-
-    box-shadow:
-        0 10px 30px
-        rgba(100, 30, 60, .12);
+.message.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .message h2 {
-    color: #ce3c6c;
+    color: #d94f76;
+    margin-bottom: 20px;
 }
 
 .message p {
-    line-height: 1.7;
-
-    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 15px;
 }
 
 .last-message {
-    color: #c43868;
-
     font-weight: bold;
+    color: #d94f76;
 }
 
 
-/* =====================
-   BUTTON
-===================== */
+/* TOMBOL ANIMASI */
 
-.kiss-button {
-    border: none;
-
-    padding: 14px 25px;
-
-    border-radius: 30px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e94e80,
-            #c92f65
-        );
-
-    color: white;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 8px 20px
-        rgba(200,40,100,.25);
-
-    transition: .2s;
+#animationButtonBox {
+    margin-top: 25px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 1s;
 }
 
-.kiss-button:hover {
-    transform:
-        translateY(-3px);
+#animationButtonBox.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.kiss-button:active {
-    transform:
-        scale(.96);
-}
 
-.kiss-button:disabled {
-    opacity: .8;
-
-    cursor: default;
-}
+/* STATUS */
 
 #status {
-    height: 25px;
-
-    margin-top: 8px;
-
-    color: #a44266;
-
+    margin-top: 15px;
+    min-height: 25px;
     font-weight: bold;
+    color: #d94f76;
 }
 
 
-/* =====================
-   TEMPAT BONEKA
-===================== */
+/* KARAKTER */
 
-.characters {
+#characters {
     position: relative;
-
-    width: min(650px, 100%);
-
-    height: 330px;
-
-    margin: 10px auto;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: flex-end;
+    height: 350px;
+    margin-top: 20px;
+    overflow: hidden;
 
     opacity: 0;
-
     visibility: hidden;
-
-    transform:
-        translateY(30px)
-        scale(.9);
-
-    transition:
-        opacity .6s ease,
-        transform .7s ease;
 }
 
-.characters.revealed {
+#characters.revealed {
     opacity: 1;
-
     visibility: visible;
-
-    transform:
-        translateY(0)
-        scale(1);
 }
 
 
-/* =====================
-   BODY BONEKA
-===================== */
+/* LOVE BESAR */
 
-.character {
-    position: relative;
-
-    width: 215px;
-
-    height: 315px;
-
-    flex-shrink: 0;
-
-    animation:
-        idle 3s ease-in-out infinite;
+.big-love {
+    position: absolute;
+    left: 50%;
+    top: 25px;
+    transform: translateX(-50%) scale(0);
+    font-size: 45px;
+    z-index: 5;
 }
 
-.panda {
-    animation-delay: .2s;
+#characters.kissing .big-love {
+    animation: bigLove 1s ease forwards;
 }
 
-@keyframes idle {
-
-    0%,
-    100% {
-        transform:
-            translateY(0);
+@keyframes bigLove {
+    0% {
+        transform: translateX(-50%) scale(0);
     }
 
     50% {
-        transform:
-            translateY(-7px);
+        transform: translateX(-50%) scale(1.5);
     }
 
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
 }
 
 
-/* =====================
-   KEPALA
-===================== */
+/* KARAKTER DASAR */
 
-.head {
+.character {
     position: absolute;
+    bottom: 30px;
+    width: 150px;
+    height: 260px;
+    transition: 1.8s cubic-bezier(.2,.8,.2,1);
+}
 
-    top: 5px;
-    left: 50%;
+.character.bear {
+    left: 8%;
+}
 
-    transform:
-        translateX(-50%);
+.character.panda {
+    right: 8%;
+}
 
-    width: 125px;
-    height: 112px;
 
-    border: 4px solid #4d303d;
+/* KEPALA */
 
+.character .head {
+    position: absolute;
+    width: 115px;
+    height: 105px;
+    left: 18px;
+    top: 10px;
     border-radius: 50%;
-
-    background: #c9855d;
-
-    z-index: 4;
+    background: #b97855;
+    z-index: 2;
 }
 
 .panda .head {
     background: white;
 }
 
-.ear {
+.character .ear {
     position: absolute;
-
-    top: -15px;
-
-    width: 48px;
-    height: 48px;
-
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
-
-    border: 4px solid #4d303d;
-
-    background: #92583f;
-
-    z-index: -1;
+    top: 0;
+    background: #7c4a36;
 }
 
 .panda .ear {
-    background: #28252b;
+    background: #222;
 }
 
-.ear.left {
-    left: 2px;
+.character .ear.left {
+    left: 5px;
 }
 
-.ear.right {
-    right: 2px;
+.character .ear.right {
+    right: 5px;
 }
 
 
-/* =====================
-   MATA
-===================== */
+/* MATA */
 
-.eye {
+.character .eye {
     position: absolute;
-
-    top: 43px;
-
-    width: 18px;
-    height: 22px;
-
+    width: 15px;
+    height: 20px;
     border-radius: 50%;
-
-    background: #30212a;
+    background: #222;
+    top: 40px;
 }
 
-.eye.left {
+.character .eye.left {
     left: 28px;
 }
 
-.eye.right {
+.character .eye.right {
     right: 28px;
 }
 
 .panda .eye {
-    width: 25px;
-    height: 19px;
+    background: #222;
+    width: 23px;
+    height: 30px;
+    transform: rotate(35deg);
+}
 
-    transform: rotate(-25deg);
+.panda .eye.left {
+    left: 22px;
 }
 
 .panda .eye.right {
-    transform: rotate(25deg);
+    right: 22px;
+    transform: rotate(-35deg);
 }
 
 
-/* =====================
-   MULUT
-===================== */
+/* HIDUNG */
 
-.muzzle {
+.character .nose {
     position: absolute;
-
-    left: 50%;
-    top: 62px;
-
-    transform:
-        translateX(-50%);
-
-    width: 48px;
-    height: 35px;
-
-    border-radius: 50%;
-
-    background: #edbd9d;
-}
-
-.panda .muzzle {
-    background: #f0e1d5;
-}
-
-.nose {
-    position: absolute;
-
-    left: 50%;
-    top: 67px;
-
-    transform:
-        translateX(-50%);
-
-    width: 14px;
-    height: 10px;
-
-    border-radius: 50%;
-
-    background: #34232d;
-}
-
-.mouth {
-    position: absolute;
-
-    left: 50%;
-    top: 77px;
-
-    transform:
-        translateX(-50%);
-
     width: 20px;
-    height: 12px;
-
-    border-bottom:
-        3px solid #34232d;
-
+    height: 15px;
+    background: #222;
     border-radius: 50%;
+    left: 48px;
+    top: 62px;
+}
+
+.character .mouth {
+    position: absolute;
+    width: 25px;
+    height: 12px;
+    border-bottom: 3px solid #222;
+    left: 45px;
+    top: 72px;
 }
 
 
-/* =====================
-   BADAN
-===================== */
+/* BADAN */
 
-.body {
+.character .body {
     position: absolute;
-
-    top: 105px;
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    width: 158px;
-    height: 148px;
-
-    border: 4px solid #4d303d;
-
-    border-radius:
-        48% 48% 35% 35%;
-
-    background: #c9855d;
-
-    z-index: 2;
+    width: 110px;
+    height: 130px;
+    left: 20px;
+    top: 100px;
+    border-radius: 45% 45% 35% 35%;
+    background: #b97855;
 }
 
 .panda .body {
     background: white;
 }
 
-.belly {
+
+/* TANGAN */
+
+.character .arm {
     position: absolute;
-
-    top: 28px;
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    width: 95px;
-    height: 106px;
-
-    border-radius: 50%;
-
-    background: #e9ad86;
-}
-
-.panda .belly {
-    background: #eeeeee;
-}
-
-
-/* =====================
-   TANGAN
-===================== */
-
-.arm {
-    position: absolute;
-
-    top: 120px;
-
-    width: 60px;
-    height: 105px;
-
-    border: 4px solid #4d303d;
-
-    border-radius: 40px;
-
-    background: #c9855d;
-
-    z-index: 1;
+    width: 35px;
+    height: 100px;
+    border-radius: 30px;
+    background: #b97855;
+    top: 115px;
+    transition: 1.8s;
 }
 
 .panda .arm {
-    background: #28252b;
+    background: #222;
 }
 
-.arm.left {
-    left: 10px;
-
-    transform:
-        rotate(28deg);
-
-    transform-origin: top;
+.character .arm.left {
+    left: 5px;
+    transform: rotate(20deg);
 }
 
-.arm.right {
-    right: 10px;
-
-    transform:
-        rotate(-28deg);
-
-    transform-origin: top;
+.character .arm.right {
+    right: 5px;
+    transform: rotate(-20deg);
 }
 
 
-/* =====================
-   KAKI
-===================== */
+/* KAKI */
 
-.leg {
+.character .leg {
     position: absolute;
-
-    top: 235px;
-
-    width: 57px;
-    height: 76px;
-
-    border: 4px solid #4d303d;
-
-    border-radius: 35px;
-
-    background: #c9855d;
+    width: 42px;
+    height: 75px;
+    border-radius: 30px;
+    background: #b97855;
+    bottom: 0;
 }
 
 .panda .leg {
-    background: #28252b;
+    background: #222;
 }
 
-.leg.left {
-    left: 52px;
-
-    transform:
-        rotate(5deg);
+.character .leg.left {
+    left: 25px;
 }
 
-.leg.right {
-    right: 52px;
-
-    transform:
-        rotate(-5deg);
+.character .leg.right {
+    right: 25px;
 }
 
 
-/* =====================
-   CIUM
-===================== */
+/* GERAK MENDEKAT */
 
-.kiss {
-    position: absolute;
-
-    top: 78px;
-
-    font-size: 34px;
-
-    opacity: 0;
-
-    z-index: 10;
+#characters.kissing .bear {
+    transform: translateX(120px);
 }
 
-.bear .kiss {
-    right: -5px;
+#characters.kissing .panda {
+    transform: translateX(-120px);
 }
 
-.panda .kiss {
-    left: -5px;
+#characters.kissing .bear .arm.right {
+    transform: rotate(-55deg);
+}
+
+#characters.kissing .panda .arm.left {
+    transform: rotate(55deg);
 }
 
 
-/* =====================
-   GERAK CIUM
-===================== */
-
-.characters.kissing .bear {
-    animation:
-        bearMove 2.8s
-        cubic-bezier(.22,.75,.2,1)
-        forwards;
-}
-
-.characters.kissing .panda {
-    animation:
-        pandaMove 2.8s
-        cubic-bezier(.22,.75,.2,1)
-        forwards;
-}
-
-@keyframes bearMove {
-
-    0% {
-        transform:
-            translateX(0)
-            rotate(0);
-    }
-
-    30% {
-        transform:
-            translateX(25px)
-            rotate(2deg);
-    }
-
-    60%,
-    75% {
-        transform:
-            translateX(65px)
-            rotate(7deg);
-    }
-
-    100% {
-        transform:
-            translateX(0)
-            rotate(0);
-    }
-}
-
-@keyframes pandaMove {
-
-    0% {
-        transform:
-            translateX(0)
-            rotate(0);
-    }
-
-    30% {
-        transform:
-            translateX(-25px)
-            rotate(-2deg);
-    }
-
-    60%,
-    75% {
-        transform:
-            translateX(-65px)
-            rotate(-7deg);
-    }
-
-    100% {
-        transform:
-            translateX(0)
-            rotate(0);
-    }
-}
-
-
-/* =====================
-   KEPALA IKUT MENDEKAT
-===================== */
-
-.characters.kissing .bear .head {
-    animation:
-        bearHead 2.8s ease forwards;
-}
-
-.characters.kissing .panda .head {
-    animation:
-        pandaHead 2.8s ease forwards;
-}
-
-@keyframes bearHead {
-
-    0%,
-    20% {
-        transform:
-            translateX(-50%)
-            rotate(0);
-    }
-
-    55%,
-    75% {
-        transform:
-            translateX(
-                calc(-50% + 13px)
-            )
-            rotate(10deg);
-    }
-
-    100% {
-        transform:
-            translateX(-50%)
-            rotate(0);
-    }
-}
-
-@keyframes pandaHead {
-
-    0%,
-    20% {
-        transform:
-            translateX(-50%)
-            rotate(0);
-    }
-
-    55%,
-    75% {
-        transform:
-            translateX(
-                calc(-50% - 13px)
-            )
-            rotate(-10deg);
-    }
-
-    100% {
-        transform:
-            translateX(-50%)
-            rotate(0);
-    }
-}
-
-
-/* =====================
-   TANGAN IKUT BERGERAK
-===================== */
-
-.characters.kissing .bear .arm.right {
-    animation:
-        bearArm 2.8s ease forwards;
-}
-
-.characters.kissing .panda .arm.left {
-    animation:
-        pandaArm 2.8s ease forwards;
-}
-
-@keyframes bearArm {
-
-    0%,
-    20% {
-        transform:
-            rotate(-28deg);
-    }
-
-    55%,
-    75% {
-        transform:
-            rotate(-10deg)
-            translateX(12px);
-    }
-
-    100% {
-        transform:
-            rotate(-28deg);
-    }
-}
-
-@keyframes pandaArm {
-
-    0%,
-    20% {
-        transform:
-            rotate(28deg);
-    }
-
-    55%,
-    75% {
-        transform:
-            rotate(10deg)
-            translateX(-12px);
-    }
-
-    100% {
-        transform:
-            rotate(28deg);
-    }
-}
-
-
-/* =====================
-   LOVE
-===================== */
-
-.big-love {
-    position: absolute;
-
-    left: 50%;
-    top: 90px;
-
-    font-size: 48px;
-
-    opacity: 0;
-
-    z-index: 20;
-
-    pointer-events: none;
-}
-
-.characters.kissing .big-love {
-    animation:
-        bigLove 2.4s ease forwards;
-}
-
-@keyframes bigLove {
-
-    0%,
-    45% {
-        opacity: 0;
-
-        transform:
-            translate(-50%, -50%)
-            scale(.2);
-    }
-
-    58% {
-        opacity: 1;
-
-        transform:
-            translate(-50%, -50%)
-            scale(1.4);
-    }
-
-    72% {
-        opacity: 1;
-
-        transform:
-            translate(-50%, -50%)
-            scale(1);
-    }
-
-    100% {
-        opacity: 0;
-
-        transform:
-            translate(-50%, -130px)
-            scale(1.2);
-    }
-}
-
-
-/* =====================
-   LOVE TERBANG
-===================== */
+/* LOVE BURST */
 
 .love-burst {
     position: absolute;
-
     left: 50%;
-    top: 90px;
-
-    z-index: 19;
+    top: 45%;
+    transform: translate(-50%, -50%);
 }
 
 .love-burst span {
     position: absolute;
-
-    opacity: 0;
-
     font-size: 25px;
+    opacity: 0;
 }
 
-.characters.kissing .love-burst span {
-    animation:
-        flyLove 2.4s ease forwards;
+#characters.kissing .love-burst span {
+    animation: heartFly 1.5s ease-out forwards;
 }
 
-.love-burst span:nth-child(1) {
-    --x: -130px;
-    --y: -90px;
-    animation-delay: .8s;
-}
-
-.love-burst span:nth-child(2) {
-    --x: -90px;
-    --y: -145px;
-    animation-delay: .85s;
-}
-
-.love-burst span:nth-child(3) {
-    --x: 0;
-    --y: -175px;
-    animation-delay: .9s;
-}
-
-.love-burst span:nth-child(4) {
-    --x: 90px;
-    --y: -145px;
-    animation-delay: .85s;
-}
-
-.love-burst span:nth-child(5) {
-    --x: 130px;
-    --y: -90px;
-    animation-delay: .8s;
-}
-
-.love-burst span:nth-child(6) {
-    --x: -50px;
-    --y: -110px;
-    animation-delay: 1s;
-}
-
-.love-burst span:nth-child(7) {
-    --x: 50px;
-    --y: -110px;
-    animation-delay: 1s;
-}
-
-@keyframes flyLove {
+@keyframes heartFly {
 
     0% {
         opacity: 0;
-
-        transform:
-            translate(-50%, -50%)
-            scale(.2);
+        transform: translate(0, 0) scale(.3);
     }
 
-    20% {
+    30% {
         opacity: 1;
-
-        transform:
-            translate(-50%, -50%)
-            scale(1.2);
     }
 
     100% {
         opacity: 0;
-
-        transform:
-            translate(
-                calc(-50% + var(--x)),
-                calc(-50% + var(--y))
-            )
-            scale(.8);
+        transform: translate(
+            calc((var(--randomX, 1)) * 100px),
+            calc((var(--randomY, 1)) * 100px)
+        ) scale(1.3);
     }
 }
 
-.bottom-text {
-    color: #c43b6b;
+.love-burst span:nth-child(1) {
+    transform: translate(-100px, -80px);
+}
 
-    font-weight: bold;
+.love-burst span:nth-child(2) {
+    transform: translate(100px, -80px);
+}
+
+.love-burst span:nth-child(3) {
+    transform: translate(-130px, 20px);
+}
+
+.love-burst span:nth-child(4) {
+    transform: translate(130px, 20px);
+}
+
+.love-burst span:nth-child(5) {
+    transform: translate(-70px, 100px);
+}
+
+.love-burst span:nth-child(6) {
+    transform: translate(70px, 100px);
 }
 
 
-/* =====================
-   HP
-===================== */
+.bottom-text {
+    margin-top: 20px;
+    color: #c94d70;
+}
+
+
+/* HP */
 
 @media (max-width: 600px) {
 
-    .characters {
-        height: 280px;
-
-        transform:
-            translateY(30px)
-            scale(.78);
+    .container {
+        padding: 35px 15px;
     }
 
-    .characters.revealed {
-        transform:
-            translateY(0)
-            scale(.78);
-    }
-
-    .character {
-        width: 205px;
-
-        flex-basis: 205px;
+    .photo-area {
+        transform: scale(.9);
+        margin-bottom: -15px;
     }
 
     .message {
-        padding: 18px 15px;
+        padding: 22px;
     }
 
-    .message p {
-        font-size: 15px;
-    }
-}
-
-
-@media (max-width: 390px) {
-
-    .characters {
-        transform:
-            translateY(30px)
-            scale(.68);
+    #characters {
+        height: 300px;
     }
 
-    .characters.revealed {
-        transform:
-            translateY(0)
-            scale(.68);
+    .character {
+        transform: scale(.75);
+        transform-origin: bottom center;
     }
 
-    .photo-box {
-        width: 76vw;
+    #characters.kissing .bear {
+        transform: translateX(80px) scale(.75);
+    }
+
+    #characters.kissing .panda {
+        transform: translateX(-80px) scale(.75);
     }
 
 }
