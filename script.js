@@ -27,9 +27,9 @@ let photoRunning = false;
 let animationRunning = false;
 
 
-/* =========================
+/* =====================================
    BUKA SURAT
-========================= */
+===================================== */
 
 envelope.addEventListener("click", function () {
 
@@ -53,9 +53,9 @@ envelope.addEventListener("click", function () {
 });
 
 
-/* =========================
+/* =====================================
    PUTAR FOTO
-========================= */
+===================================== */
 
 rotatePhotoButton.addEventListener("click", function () {
 
@@ -74,7 +74,7 @@ rotatePhotoButton.addEventListener("click", function () {
         "Lihat fotonya baik-baik ya 🥰";
 
 
-    /* HAPUS ANIMASI LAMA */
+    /* RESET ANIMASI FOTO */
 
     photoFrame.classList.remove("spin");
     photoBurst.classList.remove("active");
@@ -87,7 +87,7 @@ rotatePhotoButton.addEventListener("click", function () {
     photoFrame.classList.add("spin");
 
 
-    /* LOVE MUNCUL */
+    /* LOVE KELUAR */
 
     setTimeout(function () {
 
@@ -96,19 +96,19 @@ rotatePhotoButton.addEventListener("click", function () {
     }, 250);
 
 
-    /* TAMPILKAN KATA-KATA */
+    /* KATA-KATA MUNCUL */
 
     setTimeout(function () {
+
+        message.classList.add("show");
 
         photoStatus.textContent =
             "Nah... sekarang lanjut baca ya ❤️";
 
-        message.classList.add("show");
-
-    }, 1700);
+    }, 1600);
 
 
-    /* TOMBOL SELANJUTNYA */
+    /* TOMBOL ANIMASI MUNCUL */
 
     setTimeout(function () {
 
@@ -126,9 +126,9 @@ rotatePhotoButton.addEventListener("click", function () {
 });
 
 
-/* =========================
-   ANIMASI PANDA & BERUANG
-========================= */
+/* =====================================
+   PANDA & BERUANG
+===================================== */
 
 kissButton.addEventListener("click", function () {
 
@@ -140,12 +140,17 @@ kissButton.addEventListener("click", function () {
 
     kissButton.disabled = true;
 
-    characters.classList.add("revealed");
+
+    /* RESET POSISI */
 
     characters.classList.remove("kissing");
 
     void characters.offsetWidth;
 
+
+    /* MUNCUL */
+
+    characters.classList.add("revealed");
 
     kissButton.textContent =
         "🧸🐼 Mereka datang...";
@@ -154,7 +159,7 @@ kissButton.addEventListener("click", function () {
         "Mereka mulai mendekat... 🥰";
 
 
-    /* MEREKA MULAI BERGERAK */
+    /* MEREKA MULAI MENDEKAT */
 
     setTimeout(function () {
 
@@ -166,7 +171,7 @@ kissButton.addEventListener("click", function () {
         statusText.textContent =
             "Sebentar lagi... ❤️";
 
-    }, 700);
+    }, 600);
 
 
     /* CIUMAN */
@@ -189,12 +194,14 @@ kissButton.addEventListener("click", function () {
         statusText.textContent =
             "❤️💕💗 Love berhamburan!";
 
-    }, 2700);
+    }, 2800);
 
 
-    /* SELESAI */
+    /* SELESAI DAN KEMBALI */
 
     setTimeout(function () {
+
+        characters.classList.remove("kissing");
 
         kissButton.disabled = false;
 
@@ -202,7 +209,7 @@ kissButton.addEventListener("click", function () {
             "🧸💗🐼 Lihat lagi";
 
         statusText.textContent =
-            "Mereka saling suka ❤️";
+            "Mereka kembali ke tempatnya ❤️";
 
         animationRunning = false;
 
