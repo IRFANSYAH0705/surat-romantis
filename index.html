@@ -6,92 +6,102 @@
     <title>Untuk Kamu ❤️</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <!-- SURAT -->
+    <!-- HALAMAN SURAT -->
     <section id="letterScreen">
+
         <div class="envelope" id="envelope">
-            <div class="env-body"></div>
+
+            <div class="envelope-back"></div>
 
             <div class="letter">
                 <h2>Untuk Kamu ❤️</h2>
                 <p>Ada sesuatu yang ingin aku sampaikan...</p>
-                <b>💌 Buka suratnya</b>
+                <strong>💌 Buka suratnya</strong>
             </div>
 
-            <div class="env-flap"></div>
-            <div class="env-left"></div>
-            <div class="env-right"></div>
+            <div class="envelope-front"></div>
+            <div class="envelope-flap"></div>
 
-            <div class="open-text">Klik suratnya ❤️</div>
+            <p class="open-text">Klik suratnya ❤️</p>
+
         </div>
+
     </section>
 
 
-    <!-- ISI WEBSITE -->
+    <!-- HALAMAN UTAMA -->
     <main id="main">
+
         <div class="container">
 
             <h1>Untuk Kamu ❤️</h1>
+
             <p class="subtitle">
                 Ada sesuatu kecil yang ingin aku sampaikan kepadamu...
             </p>
 
 
             <!-- FOTO -->
-            <div class="photo-area" id="photoArea">
+            <section class="photo-section">
 
-                <div class="photo-frame" id="photoFrame">
-                    <img src="foto-dia.jpeg" alt="Foto orang spesial">
+                <div class="photo-area" id="photoArea">
+
+                    <div class="photo-frame" id="photoFrame">
+                        <img src="foto-dia.jpeg" alt="Foto orang spesial">
+                    </div>
+
+                    <div class="floating-hearts">
+
+                        <span>❤️</span>
+                        <span>💕</span>
+                        <span>💗</span>
+                        <span>💖</span>
+                        <span>❤️</span>
+                        <span>💕</span>
+
+                    </div>
+
+                    <!-- LOVE SAAT FOTO DIPUTAR -->
+                    <div class="photo-burst" id="photoBurst">
+
+                        <span>❤️</span>
+                        <span>💕</span>
+                        <span>💗</span>
+                        <span>💖</span>
+                        <span>💓</span>
+                        <span>💞</span>
+                        <span>❤️</span>
+                        <span>💕</span>
+
+                    </div>
+
                 </div>
 
-                <!-- LOVE DI SEKITAR FOTO -->
-                <div class="photo-hearts">
-                    <span>❤️</span>
-                    <span>💕</span>
-                    <span>💗</span>
-                    <span>💖</span>
-                    <span>💓</span>
-                    <span>💞</span>
+
+                <div class="rotate-area">
+
+                    <h3>💕 Coba putar fotonya dulu... 💕</h3>
+
+                    <p>
+                        Tekan tombol di bawah dan lihat apa yang terjadi ❤️
+                    </p>
+
+                    <button id="rotatePhotoButton">
+                        🔄 Putar Foto
+                    </button>
+
+                    <span id="photoStatus"></span>
+
                 </div>
 
-                <!-- LOVE SAAT FOTO DIPUTAR -->
-                <div class="photo-burst" id="photoBurst">
-                    <span>❤️</span>
-                    <span>💕</span>
-                    <span>💗</span>
-                    <span>💖</span>
-                    <span>💓</span>
-                    <span>💞</span>
-                    <span>❤️</span>
-                    <span>💕</span>
-                </div>
-
-            </div>
+            </section>
 
 
-            <!-- PERINTAH PUTAR FOTO -->
-            <div class="rotate-box" id="rotateBox">
-
-                <p class="rotate-title">
-                    💕 Coba putar fotonya dulu... 💕
-                </p>
-
-                <p class="rotate-subtitle">
-                    Tekan tombol di bawah dan lihat apa yang terjadi ❤️
-                </p>
-
-                <button id="rotatePhotoButton">
-                    🔄 Putar Foto
-                </button>
-
-                <p id="photoStatus"></p>
-
-            </div>
-
-
-            <!-- KATA-KATA -->
-            <div id="message" class="message">
+            <!-- PESAN -->
+            <section id="message" class="message">
 
                 <h2>💌 Untuk Kamu</h2>
 
@@ -118,17 +128,17 @@
                 <p class="last-message">
                     Semoga senyum kamu selalu ada,
                     dan semoga aku bisa menjadi salah satu alasan
-                    di balik senyum itu. ❤️
+                    di balik senyum kamu. ❤️
                 </p>
 
-            </div>
+            </section>
 
 
             <!-- TOMBOL ANIMASI -->
             <div id="animationButtonBox">
 
                 <button id="kissButton">
-                    🧸💗🐼 Klik untuk melihat sesuatu
+                    🧸💗🐼 Lihat sesuatu yang lucu
                 </button>
 
             </div>
@@ -136,41 +146,40 @@
             <p id="status"></p>
 
 
-            <!-- ANIMASI PANDA DAN BERUANG -->
-            <div id="characters">
+            <!-- AREA PANDA DAN BERUANG -->
+            <section id="characters">
 
-                <div class="big-love">❤️</div>
-
-                <div class="love-burst">
-                    <span>❤️</span>
-                    <span>💗</span>
-                    <span>💕</span>
-                    <span>💖</span>
-                    <span>💓</span>
-                    <span>💞</span>
-                </div>
-
+                <div class="scene-heart">❤️</div>
 
                 <!-- BERUANG -->
                 <div class="character bear">
 
-                    <div class="ear left"></div>
-                    <div class="ear right"></div>
+                    <div class="ear ear-left"></div>
+                    <div class="ear ear-right"></div>
 
                     <div class="head">
-                        <div class="eye left"></div>
-                        <div class="eye right"></div>
+
+                        <div class="eye eye-left"></div>
+                        <div class="eye eye-right"></div>
+
+                        <div class="muzzle"></div>
                         <div class="nose"></div>
+
                         <div class="mouth"></div>
+
                     </div>
 
-                    <div class="body"></div>
+                    <div class="body">
 
-                    <div class="arm left"></div>
-                    <div class="arm right"></div>
+                        <div class="belly"></div>
 
-                    <div class="leg left"></div>
-                    <div class="leg right"></div>
+                    </div>
+
+                    <div class="arm arm-left"></div>
+                    <div class="arm arm-right"></div>
+
+                    <div class="leg leg-left"></div>
+                    <div class="leg leg-right"></div>
 
                 </div>
 
@@ -178,30 +187,51 @@
                 <!-- PANDA -->
                 <div class="character panda">
 
-                    <div class="ear left"></div>
-                    <div class="ear right"></div>
+                    <div class="ear ear-left"></div>
+                    <div class="ear ear-right"></div>
 
                     <div class="head">
 
-                        <div class="eye left"></div>
-                        <div class="eye right"></div>
+                        <div class="eye eye-left"></div>
+                        <div class="eye eye-right"></div>
 
+                        <div class="muzzle"></div>
                         <div class="nose"></div>
+
                         <div class="mouth"></div>
 
                     </div>
 
-                    <div class="body"></div>
+                    <div class="body">
 
-                    <div class="arm left"></div>
-                    <div class="arm right"></div>
+                        <div class="belly"></div>
 
-                    <div class="leg left"></div>
-                    <div class="leg right"></div>
+                    </div>
+
+                    <div class="arm arm-left"></div>
+                    <div class="arm arm-right"></div>
+
+                    <div class="leg leg-left"></div>
+                    <div class="leg leg-right"></div>
 
                 </div>
 
-            </div>
+
+                <!-- LOVE SETELAH CIUM -->
+                <div class="kiss-hearts">
+
+                    <span>❤️</span>
+                    <span>💕</span>
+                    <span>💗</span>
+                    <span>💖</span>
+                    <span>💓</span>
+                    <span>💞</span>
+                    <span>❤️</span>
+                    <span>💕</span>
+
+                </div>
+
+            </section>
 
 
             <p class="bottom-text">
@@ -209,6 +239,7 @@
             </p>
 
         </div>
+
     </main>
 
 
