@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +12,8 @@
 
 <body>
 
-    <!-- Surat pembuka -->
-    <section id="letterScreen">
+    <!-- SURAT -->
+    <div id="letterScreen">
 
         <div class="envelope" id="envelope">
 
@@ -33,93 +34,106 @@
             <div class="env-flap"></div>
 
             <div class="open-text">
-                Klik amplopnya untuk membuka ❤️
+                Klik suratnya ❤️
             </div>
 
         </div>
 
-    </section>
+    </div>
 
 
-    <!-- Isi surat -->
+    <!-- HALAMAN UTAMA -->
     <main id="main">
 
         <div class="container">
 
-            <h1>Hai, Kamu ❤️</h1>
+            <h1>Untuk Kamu ❤️</h1>
 
             <p class="subtitle">
-                Surat kecil ini khusus untuk seseorang yang spesial.
+                Ada seseorang yang ingin menyampaikan sesuatu kepadamu...
             </p>
 
 
-            <!-- Foto -->
+            <!-- FOTO -->
             <div class="photo-box">
 
-                <img src="foto-dia.jpg" alt="Foto kamu">
+                <img
+                    src="foto-dia.jpeg"
+                    alt="Foto orang spesial"
+                >
 
-                <span class="heart a">💗</span>
-                <span class="heart b">💕</span>
+                <span class="heart heart1">❤️</span>
+                <span class="heart heart2">💕</span>
+                <span class="heart heart3">💗</span>
 
             </div>
 
 
-            <!-- Kata-kata -->
-            <section class="message">
+            <!-- KATA-KATA -->
+            <div class="message">
 
-                <h2>💌 Sedikit kata dari aku</h2>
+                <h2>💌 Untuk seseorang yang spesial</h2>
 
                 <p>
-                    Aku mungkin nggak selalu pintar merangkai kata,
-                    tapi ada satu hal yang selalu aku tahu:
-                    <b>aku senang punya kamu.</b>
-                    <br><br>
-
-                    Terima kasih sudah hadir dan membuat hari-hari
-                    biasa terasa lebih berarti.
-
-                    Kalau suatu hari kamu capek,
-                    semoga kamu ingat kalau ada seseorang
-                    yang selalu ingin melihat kamu baik-baik saja.
-
-                    <br><br>
-
-                    <b>
-                        Jangan berubah jadi orang lain hanya untuk disukai.
-                        Tetap jadi kamu, karena versi kamu itu yang aku suka. ❤️
-                    </b>
+                    Aku mungkin nggak selalu pandai merangkai kata,
+                    tapi aku ingin kamu tahu satu hal.
                 </p>
 
+                <p>
+                    Terima kasih sudah hadir dan membuat hari-hari
+                    biasa terasa lebih indah.
+                </p>
 
-                <!-- Tombol animasi -->
-                <button id="kissButton" class="kiss-button">
+                <p>
+                    Aku suka caramu menjadi dirimu sendiri.
+                    Jadi jangan pernah merasa harus berubah
+                    hanya supaya disukai seseorang.
+                </p>
 
-                    🧸💗🐼 Klik untuk melihat mereka berciuman 💋
+                <p>
+                    Tetap jadi kamu yang aku kenal,
+                    karena justru itu yang membuat kamu spesial. ❤️
+                </p>
 
-                </button>
+                <p class="last-message">
+                    Semoga senyum kamu selalu ada,
+                    dan semoga aku bisa menjadi salah satu alasan
+                    di balik senyum itu. ❤️
+                </p>
 
-                <div id="status" class="status"></div>
-
-            </section>
+            </div>
 
 
-            <!-- Tempat panda dan beruang -->
+            <!-- TOMBOL -->
+            <button
+                id="kissButton"
+                class="kiss-button"
+            >
+                🧸💗🐼 Klik di sini
+            </button>
+
+            <div id="status"></div>
+
+
+            <!-- ANIMASI BONEKA -->
             <div id="characters" class="characters">
 
-                <!-- Efek love -->
-                <div class="love-center">
+                <!-- LOVE TENGAH -->
+                <div class="big-love">
                     ❤️
                 </div>
 
+
+                <!-- LOVE TERBANG -->
                 <div class="love-burst">
 
                     <span>❤️</span>
                     <span>💗</span>
                     <span>💕</span>
                     <span>💖</span>
-                    <span>❤️</span>
-                    <span>💞</span>
                     <span>💓</span>
+                    <span>💞</span>
+                    <span>❤️</span>
 
                 </div>
 
@@ -129,17 +143,17 @@
 
                     <div class="head">
 
-                        <div class="ear l"></div>
-                        <div class="ear r"></div>
+                        <div class="ear left"></div>
+                        <div class="ear right"></div>
 
-                        <div class="eye l"></div>
-                        <div class="eye r"></div>
+                        <div class="eye left"></div>
+                        <div class="eye right"></div>
 
                         <div class="muzzle"></div>
 
                         <div class="nose"></div>
 
-                        <div class="smile"></div>
+                        <div class="mouth"></div>
 
                     </div>
 
@@ -151,13 +165,13 @@
                     </div>
 
 
-                    <div class="arm l"></div>
-                    <div class="arm r"></div>
+                    <div class="arm left"></div>
+                    <div class="arm right"></div>
 
-                    <div class="leg l"></div>
-                    <div class="leg r"></div>
+                    <div class="leg left"></div>
+                    <div class="leg right"></div>
 
-                    <div class="kiss-mark">
+                    <div class="kiss">
                         💋
                     </div>
 
@@ -169,17 +183,17 @@
 
                     <div class="head">
 
-                        <div class="ear l"></div>
-                        <div class="ear r"></div>
+                        <div class="ear left"></div>
+                        <div class="ear right"></div>
 
-                        <div class="eye l"></div>
-                        <div class="eye r"></div>
+                        <div class="eye left"></div>
+                        <div class="eye right"></div>
 
                         <div class="muzzle"></div>
 
                         <div class="nose"></div>
 
-                        <div class="smile"></div>
+                        <div class="mouth"></div>
 
                     </div>
 
@@ -191,13 +205,13 @@
                     </div>
 
 
-                    <div class="arm l"></div>
-                    <div class="arm r"></div>
+                    <div class="arm left"></div>
+                    <div class="arm right"></div>
 
-                    <div class="leg l"></div>
-                    <div class="leg r"></div>
+                    <div class="leg left"></div>
+                    <div class="leg right"></div>
 
-                    <div class="kiss-mark">
+                    <div class="kiss">
                         💋
                     </div>
 
@@ -206,21 +220,17 @@
             </div>
 
 
-            <div class="bottom-text">
-
-                🧸 Beruang
-                ❤️
-                🐼 Panda
-
-            </div>
+            <p class="bottom-text">
+                🧸 Beruang &nbsp; ❤️ &nbsp; 🐼 Panda
+            </p>
 
         </div>
 
     </main>
 
 
-    <!-- JavaScript -->
     <script src="script.js"></script>
 
 </body>
+
 </html>
