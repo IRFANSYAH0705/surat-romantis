@@ -7,55 +7,67 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100%;
-    font-family: "Trebuchet MS", Arial, sans-serif;
 }
 
 body {
-    background: linear-gradient(135deg, #ffe0eb, #fff7fa, #ffd4e2);
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffdce9, #fff5f8);
     color: #71344f;
     overflow-x: hidden;
 }
 
-/* =========================
-   SURAT / AMPLOP
-========================= */
+
+/* =====================
+   SURAT
+===================== */
 
 #letterScreen {
-    min-height: 100vh;
     position: fixed;
     inset: 0;
+
     z-index: 100;
 
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
-    background: linear-gradient(135deg, #ffb6cf, #ffeaf2);
+    background: linear-gradient(
+        135deg,
+        #ffb2cb,
+        #ffeaf2
+    );
 
-    transition: opacity 0.8s ease,
-                visibility 0.8s ease;
+    transition: 0.8s;
 }
 
 .envelope {
-    width: min(390px, 82vw);
-    height: 285px;
     position: relative;
-    cursor: pointer;
 
-    filter: drop-shadow(0 18px 25px rgba(150, 50, 90, 0.22));
+    width: min(390px, 82vw);
+    height: 280px;
+
+    cursor: pointer;
 }
 
 .env-body {
     position: absolute;
-    inset: 45px 0 0;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 235px;
 
     background: #fff8fb;
-    border: 2px solid #f0abc3;
+
+    border: 2px solid #eca8c0;
+
     border-radius: 12px;
 }
 
 .env-flap {
     position: absolute;
+
     top: 0;
     left: 0;
 
@@ -64,80 +76,90 @@ body {
 
     border-left: 195px solid transparent;
     border-right: 195px solid transparent;
-    border-top: 125px solid #f39aba;
+    border-top: 125px solid #f28eaf;
 
-    z-index: 4;
+    z-index: 5;
 
     transform-origin: top;
-    transition: transform 1s ease;
+
+    transition: 1s;
 }
 
 .env-left {
     position: absolute;
-    left: 0;
-    bottom: 0;
 
-    border-left: 195px solid #f6b0c7;
+    bottom: 0;
+    left: 0;
+
+    border-left: 195px solid #f5a8c1;
     border-top: 115px solid transparent;
 
-    z-index: 3;
+    z-index: 4;
 }
 
 .env-right {
     position: absolute;
-    right: 0;
-    bottom: 0;
 
-    border-right: 195px solid #f6b0c7;
+    bottom: 0;
+    right: 0;
+
+    border-right: 195px solid #f5a8c1;
     border-top: 115px solid transparent;
 
-    z-index: 3;
+    z-index: 4;
 }
 
 .letter {
     position: absolute;
+
     left: 8%;
     bottom: 18px;
 
     width: 84%;
-    height: 185px;
+    height: 180px;
 
     background: white;
+
     border-radius: 10px;
 
-    padding: 24px 18px;
     text-align: center;
+
+    padding: 25px 15px;
 
     z-index: 2;
 
-    box-shadow: 0 4px 12px rgba(100, 40, 60, 0.12);
+    box-shadow: 0 5px 15px rgba(0,0,0,.12);
 
-    transition: transform 1s ease;
+    transition: 1s;
 }
 
 .letter h2 {
-    margin: 0;
-    color: #d94c79;
-    font-size: 23px;
+    margin-top: 0;
+
+    color: #d64070;
 }
 
 .letter p {
     font-size: 14px;
-    line-height: 1.5;
 }
 
 .open-text {
     position: absolute;
-    bottom: -45px;
+
     width: 100%;
 
+    bottom: -45px;
+
     text-align: center;
+
+    color: #a53e63;
+
     font-weight: bold;
-    color: #a83e64;
 }
 
 .envelope.open .env-flap {
     transform: rotateX(180deg);
+
     z-index: 1;
 }
 
@@ -146,237 +168,261 @@ body {
 }
 
 
-/* =========================
-   HALAMAN UTAMA
-========================= */
+/* =====================
+   MAIN
+===================== */
 
 #main {
     display: none;
 
     min-height: 100vh;
-    padding: 32px 15px 55px;
+
+    padding: 35px 15px 50px;
 
     opacity: 0;
 
-    transition: opacity 1s ease;
+    transition: 1s;
 }
 
 #main.show {
     display: block;
+
     opacity: 1;
 }
 
 .container {
     width: min(820px, 100%);
+
     margin: auto;
+
     text-align: center;
 }
 
 h1 {
-    font-size: clamp(28px, 6vw, 52px);
-    margin: 5px 0;
+    color: #c83968;
 
-    color: #c93d6c;
+    font-size: clamp(
+        30px,
+        6vw,
+        50px
+    );
+
+    margin: 0;
 }
 
 .subtitle {
-    font-size: clamp(14px, 3vw, 18px);
-    margin-bottom: 22px;
+    color: #92506a;
 
-    color: #8a4b64;
+    font-size: 17px;
+
+    margin-bottom: 25px;
 }
 
 
-/* =========================
+/* =====================
    FOTO
-========================= */
+===================== */
 
 .photo-box {
-    width: min(350px, 82vw);
-    margin: auto;
     position: relative;
+
+    width: min(
+        350px,
+        82vw
+    );
+
+    margin: auto;
 }
 
 .photo-box img {
+    width: 100%;
+
     display: block;
 
-    width: 100%;
     aspect-ratio: 3 / 4;
 
     object-fit: cover;
 
     border: 8px solid white;
-    border-radius: 26px;
+
+    border-radius: 25px;
 
     box-shadow:
-        0 18px 38px rgba(120, 45, 75, 0.22);
-
-    transform: rotate(-1deg);
+        0 15px 35px
+        rgba(100, 30, 60, .2);
 }
 
 .heart {
     position: absolute;
 
-    font-size: 35px;
+    font-size: 30px;
 
-    animation: heartBeat 1.2s ease-in-out infinite;
+    animation: heartFloat 1.5s infinite;
 }
 
-.heart.a {
-    left: -18px;
-    top: -20px;
+.heart1 {
+    top: -15px;
+    left: -15px;
 }
 
-.heart.b {
-    right: -18px;
-    bottom: -18px;
+.heart2 {
+    top: 40%;
+    right: -20px;
 
-    animation-delay: 0.3s;
+    animation-delay: .3s;
 }
 
-@keyframes heartBeat {
+.heart3 {
+    bottom: -15px;
+    left: -10px;
+
+    animation-delay: .6s;
+}
+
+@keyframes heartFloat {
+
     50% {
-        transform: scale(1.22);
+        transform:
+            translateY(-10px)
+            scale(1.2);
     }
+
 }
 
 
-/* =========================
+/* =====================
    KATA-KATA
-========================= */
+===================== */
 
 .message {
     max-width: 760px;
 
-    margin: 30px auto 15px;
+    margin: 30px auto;
+
     padding: 22px;
 
-    background: rgba(255, 255, 255, 0.78);
-
-    border: 1px solid rgba(255, 255, 255, 0.9);
+    background:
+        rgba(255,255,255,.82);
 
     border-radius: 25px;
 
     box-shadow:
-        0 12px 30px rgba(120, 45, 75, 0.12);
+        0 10px 30px
+        rgba(100, 30, 60, .12);
 }
 
 .message h2 {
-    margin: 0 0 10px;
-
-    color: #cf3e6e;
-    font-size: 22px;
+    color: #ce3c6c;
 }
 
 .message p {
-    margin: 0;
+    line-height: 1.7;
 
-    line-height: 1.75;
     font-size: 16px;
 }
 
+.last-message {
+    color: #c43868;
 
-/* =========================
-   TOMBOL
-========================= */
+    font-weight: bold;
+}
+
+
+/* =====================
+   BUTTON
+===================== */
 
 .kiss-button {
-    margin: 18px auto 8px;
-
     border: none;
-    cursor: pointer;
 
-    min-height: 48px;
+    padding: 14px 25px;
 
-    padding: 13px 25px;
+    border-radius: 30px;
 
-    border-radius: 999px;
-
-    background: linear-gradient(
-        135deg,
-        #e94f80,
-        #c93268
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #e94e80,
+            #c92f65
+        );
 
     color: white;
 
     font-size: 16px;
+
     font-weight: bold;
 
-    box-shadow:
-        0 8px 20px rgba(201, 50, 104, 0.25);
+    cursor: pointer;
 
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+    box-shadow:
+        0 8px 20px
+        rgba(200,40,100,.25);
+
+    transition: .2s;
 }
 
 .kiss-button:hover {
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 12px 25px rgba(201, 50, 104, 0.3);
+    transform:
+        translateY(-3px);
 }
 
 .kiss-button:active {
-    transform: scale(0.97);
+    transform:
+        scale(.96);
 }
 
 .kiss-button:disabled {
+    opacity: .8;
+
     cursor: default;
-    opacity: 0.85;
 }
 
-.status {
-    height: 24px;
+#status {
+    height: 25px;
 
-    margin-top: 2px;
+    margin-top: 8px;
 
-    font-size: 14px;
-
-    color: #a24a68;
+    color: #a44266;
 
     font-weight: bold;
 }
 
 
-/* =========================
-   TEMPAT PANDA + BERUANG
-========================= */
+/* =====================
+   TEMPAT BONEKA
+===================== */
 
 .characters {
     position: relative;
 
-    width: min(620px, 100%);
+    width: min(650px, 100%);
+
     height: 330px;
 
-    margin: 5px auto 0;
+    margin: 10px auto;
 
     display: flex;
-    align-items: flex-end;
+
     justify-content: center;
 
-    overflow: visible;
+    align-items: flex-end;
 
-    /* Awalnya disembunyikan */
     opacity: 0;
+
     visibility: hidden;
 
     transform:
-        translateY(28px)
-        scale(0.94);
+        translateY(30px)
+        scale(.9);
 
     transition:
-        opacity 0.55s ease,
-        transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1),
-        visibility 0.55s ease;
+        opacity .6s ease,
+        transform .7s ease;
 }
-
-
-/* Setelah tombol diklik */
 
 .characters.revealed {
     opacity: 1;
+
     visibility: visible;
 
     transform:
@@ -385,61 +431,62 @@ h1 {
 }
 
 
-/* =========================
-   BONEKA
-========================= */
+/* =====================
+   BODY BONEKA
+===================== */
 
 .character {
     position: relative;
 
     width: 215px;
+
     height: 315px;
 
-    flex: 0 0 215px;
+    flex-shrink: 0;
 
     animation:
-        idleFloat 2.8s ease-in-out infinite;
-
-    transform-origin: 50% 100%;
-
-    will-change: transform;
+        idle 3s ease-in-out infinite;
 }
 
-.character.panda {
-    animation-delay: 0.18s;
+.panda {
+    animation-delay: .2s;
 }
 
-@keyframes idleFloat {
+@keyframes idle {
 
     0%,
     100% {
-        transform: translateY(0);
+        transform:
+            translateY(0);
     }
 
     50% {
-        transform: translateY(-7px);
+        transform:
+            translateY(-7px);
     }
+
 }
 
 
-/* =========================
+/* =====================
    KEPALA
-========================= */
+===================== */
 
 .head {
     position: absolute;
 
-    left: 50%;
     top: 5px;
+    left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     width: 125px;
     height: 112px;
 
-    border: 4px solid #503040;
+    border: 4px solid #4d303d;
 
-    border-radius: 52%;
+    border-radius: 50%;
 
     background: #c9855d;
 
@@ -450,75 +497,76 @@ h1 {
     background: white;
 }
 
-
-/* Telinga */
-
 .ear {
     position: absolute;
 
-    top: -16px;
+    top: -15px;
 
     width: 48px;
     height: 48px;
 
-    border: 4px solid #503040;
-
     border-radius: 50%;
 
-    background: #9b6048;
+    border: 4px solid #4d303d;
+
+    background: #92583f;
 
     z-index: -1;
 }
 
 .panda .ear {
-    background: #29252b;
+    background: #28252b;
 }
 
-.ear.l {
-    left: 3px;
+.ear.left {
+    left: 2px;
 }
 
-.ear.r {
-    right: 3px;
+.ear.right {
+    right: 2px;
 }
 
 
-/* Mata */
+/* =====================
+   MATA
+===================== */
 
 .eye {
     position: absolute;
 
     top: 43px;
 
-    width: 17px;
-    height: 21px;
-
-    background: #30212b;
+    width: 18px;
+    height: 22px;
 
     border-radius: 50%;
+
+    background: #30212a;
 }
 
-.eye.l {
+.eye.left {
     left: 28px;
 }
 
-.eye.r {
+.eye.right {
     right: 28px;
 }
 
 .panda .eye {
-    width: 24px;
-    height: 18px;
+    width: 25px;
+    height: 19px;
 
-    transform: rotate(-24deg);
+    transform: rotate(-25deg);
 }
 
-.panda .eye.r {
-    transform: rotate(24deg);
+.panda .eye.right {
+    transform: rotate(25deg);
 }
 
 
-/* Mulut */
+/* =====================
+   MULUT
+===================== */
 
 .muzzle {
     position: absolute;
@@ -526,10 +574,11 @@ h1 {
     left: 50%;
     top: 62px;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
-    width: 47px;
-    height: 34px;
+    width: 48px;
+    height: 35px;
 
     border-radius: 50%;
 
@@ -546,7 +595,8 @@ h1 {
     left: 50%;
     top: 67px;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     width: 14px;
     height: 10px;
@@ -554,46 +604,47 @@ h1 {
     border-radius: 50%;
 
     background: #34232d;
-
-    z-index: 2;
 }
 
-.smile {
+.mouth {
     position: absolute;
 
     left: 50%;
     top: 77px;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
-    width: 21px;
+    width: 20px;
     height: 12px;
 
-    border-bottom: 3px solid #34232d;
+    border-bottom:
+        3px solid #34232d;
 
     border-radius: 50%;
 }
 
 
-/* =========================
+/* =====================
    BADAN
-========================= */
+===================== */
 
 .body {
     position: absolute;
 
-    top: 106px;
+    top: 105px;
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     width: 158px;
-    height: 147px;
+    height: 148px;
 
-    border: 4px solid #503040;
+    border: 4px solid #4d303d;
 
     border-radius:
-        48% 48% 34% 34%;
+        48% 48% 35% 35%;
 
     background: #c9855d;
 
@@ -607,12 +658,13 @@ h1 {
 .belly {
     position: absolute;
 
+    top: 28px;
     left: 50%;
-    top: 27px;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
-    width: 94px;
+    width: 95px;
     height: 106px;
 
     border-radius: 50%;
@@ -621,23 +673,23 @@ h1 {
 }
 
 .panda .belly {
-    background: #f2eeee;
+    background: #eeeeee;
 }
 
 
-/* =========================
+/* =====================
    TANGAN
-========================= */
+===================== */
 
 .arm {
     position: absolute;
 
     top: 120px;
 
-    width: 61px;
-    height: 106px;
+    width: 60px;
+    height: 105px;
 
-    border: 4px solid #503040;
+    border: 4px solid #4d303d;
 
     border-radius: 40px;
 
@@ -647,10 +699,10 @@ h1 {
 }
 
 .panda .arm {
-    background: #29252b;
+    background: #28252b;
 }
 
-.arm.l {
+.arm.left {
     left: 10px;
 
     transform:
@@ -659,7 +711,7 @@ h1 {
     transform-origin: top;
 }
 
-.arm.r {
+.arm.right {
     right: 10px;
 
     transform:
@@ -669,262 +721,173 @@ h1 {
 }
 
 
-/* =========================
+/* =====================
    KAKI
-========================= */
+===================== */
 
 .leg {
     position: absolute;
 
-    top: 236px;
+    top: 235px;
 
     width: 57px;
-    height: 75px;
+    height: 76px;
 
-    border: 4px solid #503040;
+    border: 4px solid #4d303d;
 
     border-radius: 35px;
 
     background: #c9855d;
-
-    z-index: 1;
 }
 
 .panda .leg {
-    background: #29252b;
+    background: #28252b;
 }
 
-.leg.l {
+.leg.left {
     left: 52px;
 
-    transform: rotate(5deg);
+    transform:
+        rotate(5deg);
 }
 
-.leg.r {
+.leg.right {
     right: 52px;
 
-    transform: rotate(-5deg);
+    transform:
+        rotate(-5deg);
 }
 
 
-/* =========================
+/* =====================
    CIUM
-========================= */
+===================== */
 
-.kiss-mark {
+.kiss {
     position: absolute;
 
-    top: 82px;
+    top: 78px;
 
     font-size: 34px;
 
     opacity: 0;
 
-    z-index: 8;
+    z-index: 10;
 }
 
-.bear .kiss-mark {
-    right: -4px;
+.bear .kiss {
+    right: -5px;
 }
 
-.panda .kiss-mark {
-    left: -4px;
+.panda .kiss {
+    left: -5px;
 }
 
 
-/* =========================
-   GERAK MENDEKAT
-========================= */
+/* =====================
+   GERAK CIUM
+===================== */
 
 .characters.kissing .bear {
     animation:
-        bearKiss 2.6s
-        cubic-bezier(0.22, 0.75, 0.2, 1)
+        bearMove 2.8s
+        cubic-bezier(.22,.75,.2,1)
         forwards;
 }
 
 .characters.kissing .panda {
     animation:
-        pandaKiss 2.6s
-        cubic-bezier(0.22, 0.75, 0.2, 1)
+        pandaMove 2.8s
+        cubic-bezier(.22,.75,.2,1)
         forwards;
 }
 
-
-/* Kepala ikut bergerak */
-
-.characters.kissing .bear .head {
-    animation:
-        bearHeadKiss 2.6s
-        cubic-bezier(0.22, 0.75, 0.2, 1)
-        forwards;
-}
-
-.characters.kissing .panda .head {
-    animation:
-        pandaHeadKiss 2.6s
-        cubic-bezier(0.22, 0.75, 0.2, 1)
-        forwards;
-}
-
-
-/* Badan ikut condong */
-
-.characters.kissing .bear .body {
-    animation:
-        bearBodyKiss 2.6s
-        cubic-bezier(0.22, 0.75, 0.2, 1)
-        forwards;
-}
-
-.characters.kissing .panda .body {
-    animation:
-        pandaBodyKiss 2.6s
-        cubic-bezier(0.22, 0.75, 0.2, 1)
-        forwards;
-}
-
-
-/* Tangan ikut bergerak */
-
-.characters.kissing .bear .arm.r {
-    animation:
-        bearArm 2.6s
-        cubic-bezier(0.22, 0.75, 0.2, 1)
-        forwards;
-}
-
-.characters.kissing .panda .arm.l {
-    animation:
-        pandaArm 2.6s
-        cubic-bezier(0.22, 0.75, 0.2, 1)
-        forwards;
-}
-
-
-/* Kaki ikut bergerak */
-
-.characters.kissing .bear .leg.l {
-    animation:
-        bearLegL 2.6s
-        cubic-bezier(0.22, 0.75, 0.2, 1)
-        forwards;
-}
-
-.characters.kissing .bear .leg.r {
-    animation:
-        bearLegR 2.6s
-        cubic-bezier(0.22, 0.75, 0.2, 1)
-        forwards;
-}
-
-.characters.kissing .panda .leg.l {
-    animation:
-        pandaLegL 2.6s
-        cubic-bezier(0.22, 0.75, 0.2, 1)
-        forwards;
-}
-
-.characters.kissing .panda .leg.r {
-    animation:
-        pandaLegR 2.6s
-        cubic-bezier(0.22, 0.75, 0.2, 1)
-        forwards;
-}
-
-
-/* =========================
-   ANIMASI UTAMA
-========================= */
-
-@keyframes bearKiss {
+@keyframes bearMove {
 
     0% {
         transform:
             translateX(0)
-            translateY(0)
             rotate(0);
     }
 
-    28% {
+    30% {
         transform:
-            translateX(24px)
-            translateY(-3px)
+            translateX(25px)
             rotate(2deg);
     }
 
-    55%,
-    70% {
+    60%,
+    75% {
         transform:
-            translateX(63px)
-            translateY(-1px)
+            translateX(65px)
             rotate(7deg);
     }
 
     100% {
         transform:
             translateX(0)
-            translateY(0)
             rotate(0);
     }
 }
 
-@keyframes pandaKiss {
+@keyframes pandaMove {
 
     0% {
         transform:
             translateX(0)
-            translateY(0)
             rotate(0);
     }
 
-    28% {
+    30% {
         transform:
-            translateX(-24px)
-            translateY(-3px)
+            translateX(-25px)
             rotate(-2deg);
     }
 
-    55%,
-    70% {
+    60%,
+    75% {
         transform:
-            translateX(-63px)
-            translateY(-1px)
+            translateX(-65px)
             rotate(-7deg);
     }
 
     100% {
         transform:
             translateX(0)
-            translateY(0)
             rotate(0);
     }
 }
 
 
-/* =========================
-   KEPALA
-========================= */
+/* =====================
+   KEPALA IKUT MENDEKAT
+===================== */
 
-@keyframes bearHeadKiss {
+.characters.kissing .bear .head {
+    animation:
+        bearHead 2.8s ease forwards;
+}
+
+.characters.kissing .panda .head {
+    animation:
+        pandaHead 2.8s ease forwards;
+}
+
+@keyframes bearHead {
 
     0%,
-    18% {
+    20% {
         transform:
             translateX(-50%)
             rotate(0);
     }
 
-    42% {
+    55%,
+    75% {
         transform:
-            translateX(calc(-50% + 10px))
-            rotate(7deg);
-    }
-
-    58%,
-    70% {
-        transform:
-            translateX(calc(-50% + 13px))
+            translateX(
+                calc(-50% + 13px)
+            )
             rotate(10deg);
     }
 
@@ -935,25 +898,21 @@ h1 {
     }
 }
 
-@keyframes pandaHeadKiss {
+@keyframes pandaHead {
 
     0%,
-    18% {
+    20% {
         transform:
             translateX(-50%)
             rotate(0);
     }
 
-    42% {
+    55%,
+    75% {
         transform:
-            translateX(calc(-50% - 10px))
-            rotate(-7deg);
-    }
-
-    58%,
-    70% {
-        transform:
-            translateX(calc(-50% - 13px))
+            translateX(
+                calc(-50% - 13px)
+            )
             rotate(-10deg);
     }
 
@@ -965,324 +924,88 @@ h1 {
 }
 
 
-/* =========================
-   BADAN
-========================= */
+/* =====================
+   TANGAN IKUT BERGERAK
+===================== */
 
-@keyframes bearBodyKiss {
-
-    0%,
-    18% {
-        transform:
-            translateX(-50%)
-            rotate(0);
-    }
-
-    42% {
-        transform:
-            translateX(calc(-50% + 5px))
-            rotate(3deg);
-    }
-
-    58%,
-    70% {
-        transform:
-            translateX(calc(-50% + 7px))
-            rotate(4deg);
-    }
-
-    100% {
-        transform:
-            translateX(-50%)
-            rotate(0);
-    }
+.characters.kissing .bear .arm.right {
+    animation:
+        bearArm 2.8s ease forwards;
 }
 
-@keyframes pandaBodyKiss {
-
-    0%,
-    18% {
-        transform:
-            translateX(-50%)
-            rotate(0);
-    }
-
-    42% {
-        transform:
-            translateX(calc(-50% - 5px))
-            rotate(-3deg);
-    }
-
-    58%,
-    70% {
-        transform:
-            translateX(calc(-50% - 7px))
-            rotate(-4deg);
-    }
-
-    100% {
-        transform:
-            translateX(-50%)
-            rotate(0);
-    }
+.characters.kissing .panda .arm.left {
+    animation:
+        pandaArm 2.8s ease forwards;
 }
-
-
-/* =========================
-   TANGAN
-========================= */
 
 @keyframes bearArm {
 
     0%,
-    18% {
-        transform: rotate(-28deg);
-    }
-
-    48% {
+    20% {
         transform:
-            rotate(-16deg)
-            translateX(8px);
+            rotate(-28deg);
     }
 
-    62%,
-    70% {
+    55%,
+    75% {
         transform:
             rotate(-10deg)
             translateX(12px);
     }
 
     100% {
-        transform: rotate(-28deg);
+        transform:
+            rotate(-28deg);
     }
 }
 
 @keyframes pandaArm {
 
     0%,
-    18% {
-        transform: rotate(28deg);
-    }
-
-    48% {
+    20% {
         transform:
-            rotate(16deg)
-            translateX(-8px);
+            rotate(28deg);
     }
 
-    62%,
-    70% {
+    55%,
+    75% {
         transform:
             rotate(10deg)
             translateX(-12px);
     }
 
     100% {
-        transform: rotate(28deg);
-    }
-}
-
-
-/* =========================
-   KAKI
-========================= */
-
-@keyframes bearLegL {
-
-    0%,
-    18% {
-        transform: rotate(5deg);
-    }
-
-    50%,
-    70% {
         transform:
-            rotate(9deg)
-            translateX(4px);
-    }
-
-    100% {
-        transform: rotate(5deg);
-    }
-}
-
-@keyframes bearLegR {
-
-    0%,
-    18% {
-        transform: rotate(-5deg);
-    }
-
-    50%,
-    70% {
-        transform:
-            rotate(-2deg)
-            translateX(4px);
-    }
-
-    100% {
-        transform: rotate(-5deg);
-    }
-}
-
-@keyframes pandaLegL {
-
-    0%,
-    18% {
-        transform: rotate(5deg);
-    }
-
-    50%,
-    70% {
-        transform:
-            rotate(2deg)
-            translateX(-4px);
-    }
-
-    100% {
-        transform: rotate(5deg);
-    }
-}
-
-@keyframes pandaLegR {
-
-    0%,
-    18% {
-        transform: rotate(-5deg);
-    }
-
-    50%,
-    70% {
-        transform:
-            rotate(-9deg)
-            translateX(-4px);
-    }
-
-    100% {
-        transform: rotate(-5deg);
+            rotate(28deg);
     }
 }
 
 
-/* =========================
-   EKSPRESI
-========================= */
+/* =====================
+   LOVE
+===================== */
 
-.characters.kissing .smile {
-    animation:
-        smilePulse 2.6s ease forwards;
-}
-
-@keyframes smilePulse {
-
-    0%,
-    30% {
-        transform:
-            translateX(-50%)
-            scale(1);
-    }
-
-    55%,
-    72% {
-        transform:
-            translateX(-50%)
-            scale(1.35);
-    }
-
-    100% {
-        transform:
-            translateX(-50%)
-            scale(1);
-    }
-}
-
-.characters.kissing .muzzle {
-    animation:
-        cheek 2.6s ease forwards;
-}
-
-@keyframes cheek {
-
-    0%,
-    40% {
-        transform:
-            translateX(-50%)
-            scale(1);
-    }
-
-    55%,
-    72% {
-        transform:
-            translateX(-50%)
-            scale(1.12);
-    }
-
-    100% {
-        transform:
-            translateX(-50%)
-            scale(1);
-    }
-}
-
-
-/* =========================
-   TANDA CIUM
-========================= */
-
-.characters.kissing .kiss-mark {
-    animation:
-        showKiss 2.6s ease forwards;
-}
-
-@keyframes showKiss {
-
-    0%,
-    18% {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-
-    35%,
-    70% {
-        opacity: 1;
-        transform: scale(1.12);
-    }
-
-    85%,
-    100% {
-        opacity: 0;
-        transform: scale(0.7);
-    }
-}
-
-
-/* =========================
-   LOVE BESAR
-========================= */
-
-.love-center {
+.big-love {
     position: absolute;
 
     left: 50%;
-    top: 102px;
+    top: 90px;
 
-    z-index: 21;
-
-    font-size: 46px;
+    font-size: 48px;
 
     opacity: 0;
+
+    z-index: 20;
 
     pointer-events: none;
 }
 
-.characters.kissing .love-center {
+.characters.kissing .big-love {
     animation:
-        centerLove 2.3s
-        cubic-bezier(0.2, 0.8, 0.2, 1)
-        forwards;
+        bigLove 2.4s ease forwards;
 }
 
-@keyframes centerLove {
+@keyframes bigLove {
 
     0%,
     45% {
@@ -1290,7 +1013,7 @@ h1 {
 
         transform:
             translate(-50%, -50%)
-            scale(0.2);
+            scale(.2);
     }
 
     58% {
@@ -1298,7 +1021,7 @@ h1 {
 
         transform:
             translate(-50%, -50%)
-            scale(1.35);
+            scale(1.4);
     }
 
     72% {
@@ -1313,124 +1036,96 @@ h1 {
         opacity: 0;
 
         transform:
-            translate(-50%, -105px)
-            scale(1.15);
+            translate(-50%, -130px)
+            scale(1.2);
     }
 }
 
 
-/* =========================
-   LOVE BERTERBANGAN
-========================= */
+/* =====================
+   LOVE TERBANG
+===================== */
 
 .love-burst {
     position: absolute;
 
     left: 50%;
-    top: 95px;
+    top: 90px;
 
-    width: 1px;
-    height: 1px;
-
-    pointer-events: none;
-
-    z-index: 20;
+    z-index: 19;
 }
 
 .love-burst span {
     position: absolute;
 
-    left: 0;
-    top: 0;
-
-    font-size: 24px;
-
     opacity: 0;
 
-    transform:
-        translate(-50%, -50%)
-        scale(0.2);
+    font-size: 25px;
 }
 
 .characters.kissing .love-burst span {
     animation:
-        loveParticle 2.3s
-        cubic-bezier(0.2, 0.7, 0.2, 1)
-        forwards;
+        flyLove 2.4s ease forwards;
 }
 
 .love-burst span:nth-child(1) {
-    --x: -120px;
+    --x: -130px;
     --y: -90px;
-    --r: -20deg;
-
-    animation-delay: 0.78s;
+    animation-delay: .8s;
 }
 
 .love-burst span:nth-child(2) {
-    --x: -80px;
+    --x: -90px;
     --y: -145px;
-    --r: 20deg;
-
-    animation-delay: 0.84s;
+    animation-delay: .85s;
 }
 
 .love-burst span:nth-child(3) {
-    --x: 0px;
+    --x: 0;
     --y: -175px;
-    --r: 0deg;
-
-    animation-delay: 0.90s;
+    animation-delay: .9s;
 }
 
 .love-burst span:nth-child(4) {
-    --x: 80px;
+    --x: 90px;
     --y: -145px;
-    --r: -20deg;
-
-    animation-delay: 0.84s;
+    animation-delay: .85s;
 }
 
 .love-burst span:nth-child(5) {
-    --x: 120px;
+    --x: 130px;
     --y: -90px;
-    --r: 20deg;
-
-    animation-delay: 0.78s;
+    animation-delay: .8s;
 }
 
 .love-burst span:nth-child(6) {
-    --x: -42px;
-    --y: -105px;
-    --r: -35deg;
-
+    --x: -50px;
+    --y: -110px;
     animation-delay: 1s;
 }
 
 .love-burst span:nth-child(7) {
-    --x: 42px;
-    --y: -105px;
-    --r: 35deg;
-
-    animation-delay: 1.04s;
+    --x: 50px;
+    --y: -110px;
+    animation-delay: 1s;
 }
 
-@keyframes loveParticle {
+@keyframes flyLove {
 
     0% {
         opacity: 0;
 
         transform:
             translate(-50%, -50%)
-            scale(0.2);
+            scale(.2);
     }
 
-    18% {
+    20% {
         opacity: 1;
 
         transform:
             translate(-50%, -50%)
-            scale(1.25);
+            scale(1.2);
     }
 
     100% {
@@ -1441,76 +1136,69 @@ h1 {
                 calc(-50% + var(--x)),
                 calc(-50% + var(--y))
             )
-            scale(0.8)
-            rotate(var(--r));
+            scale(.8);
     }
 }
 
+.bottom-text {
+    color: #c43b6b;
 
-/* =========================
-   RESPONSIVE HP
-========================= */
+    font-weight: bold;
+}
+
+
+/* =====================
+   HP
+===================== */
 
 @media (max-width: 600px) {
 
     .characters {
-        height: 285px;
+        height: 280px;
 
         transform:
-            translateY(28px)
-            scale(0.82);
-
-        transform-origin: center bottom;
+            translateY(30px)
+            scale(.78);
     }
 
     .characters.revealed {
         transform:
             translateY(0)
-            scale(0.82);
+            scale(.78);
     }
 
     .character {
         width: 205px;
+
         flex-basis: 205px;
     }
 
     .message {
         padding: 18px 15px;
     }
+
+    .message p {
+        font-size: 15px;
+    }
 }
+
 
 @media (max-width: 390px) {
 
     .characters {
-        height: 265px;
-
         transform:
-            translateY(28px)
-            scale(0.72);
+            translateY(30px)
+            scale(.68);
     }
 
     .characters.revealed {
         transform:
             translateY(0)
-            scale(0.72);
+            scale(.68);
     }
 
     .photo-box {
         width: 76vw;
     }
-}
 
-
-/* =========================
-   REDUCE MOTION
-========================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-    }
 }
