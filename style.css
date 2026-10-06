@@ -1,249 +1,1324 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Untuk Kamu ❤️</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-<body>
+html {
+    scroll-behavior: smooth;
+}
 
-    <!-- HALAMAN SURAT -->
-    <section id="letterScreen">
+body {
+    font-family: Arial, sans-serif;
+    background:
+        radial-gradient(circle at top, #fff5f8, transparent 45%),
+        linear-gradient(135deg, #ffe7ef, #fff9fb);
 
-        <div class="envelope" id="envelope">
+    color: #603947;
 
-            <div class="envelope-back"></div>
+    min-height: 100vh;
 
-            <div class="letter">
-                <h2>Untuk Kamu ❤️</h2>
-                <p>Ada sesuatu yang ingin aku sampaikan...</p>
-                <strong>💌 Buka suratnya</strong>
-            </div>
+    overflow-x: hidden;
+}
 
-            <div class="envelope-front"></div>
-            <div class="envelope-flap"></div>
 
-            <p class="open-text">Klik suratnya ❤️</p>
+/* =====================================
+   SURAT
+===================================== */
 
-        </div>
+#letterScreen {
+    position: fixed;
 
-    </section>
+    inset: 0;
 
+    z-index: 100;
 
-    <!-- HALAMAN UTAMA -->
-    <main id="main">
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-        <div class="container">
+    background:
+        radial-gradient(circle, #fff3f7, #ffdce8);
 
-            <h1>Untuk Kamu ❤️</h1>
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
 
-            <p class="subtitle">
-                Ada sesuatu kecil yang ingin aku sampaikan kepadamu...
-            </p>
+.envelope {
+    width: 330px;
+    height: 230px;
 
+    position: relative;
 
-            <!-- FOTO -->
-            <section class="photo-section">
+    cursor: pointer;
+}
 
-                <div class="photo-area" id="photoArea">
+.envelope-back {
+    position: absolute;
 
-                    <div class="photo-frame" id="photoFrame">
-                        <img src="foto-dia.jpeg" alt="Foto orang spesial">
-                    </div>
+    inset: 0;
 
-                    <div class="floating-hearts">
+    background: #e58ba7;
 
-                        <span>❤️</span>
-                        <span>💕</span>
-                        <span>💗</span>
-                        <span>💖</span>
-                        <span>❤️</span>
-                        <span>💕</span>
+    border-radius: 12px;
 
-                    </div>
+    box-shadow:
+        0 25px 50px rgba(120, 40, 70, .2);
+}
 
-                    <!-- LOVE SAAT FOTO DIPUTAR -->
-                    <div class="photo-burst" id="photoBurst">
 
-                        <span>❤️</span>
-                        <span>💕</span>
-                        <span>💗</span>
-                        <span>💖</span>
-                        <span>💓</span>
-                        <span>💞</span>
-                        <span>❤️</span>
-                        <span>💕</span>
+/* KERTAS */
 
-                    </div>
+.letter {
+    position: absolute;
 
-                </div>
+    width: 275px;
+    height: 190px;
 
+    left: 27px;
+    top: 18px;
 
-                <div class="rotate-area">
+    z-index: 2;
 
-                    <h3>💕 Coba putar fotonya dulu... 💕</h3>
+    background: white;
 
-                    <p>
-                        Tekan tombol di bawah dan lihat apa yang terjadi ❤️
-                    </p>
+    border-radius: 8px;
 
-                    <button id="rotatePhotoButton">
-                        🔄 Putar Foto
-                    </button>
+    text-align: center;
 
-                    <span id="photoStatus"></span>
+    padding: 25px 15px;
 
-                </div>
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, .08);
 
-            </section>
+    transition:
+        transform 1s cubic-bezier(.2, .8, .2, 1);
+}
 
+.letter-heart {
+    font-size: 25px;
 
-            <!-- PESAN -->
-            <section id="message" class="message">
+    margin-bottom: 5px;
+}
 
-                <h2>💌 Untuk Kamu</h2>
+.letter h2 {
+    color: #d45378;
 
-                <p>
-                    Aku mungkin nggak selalu pandai merangkai kata,
-                    tapi ada satu hal yang ingin aku sampaikan.
-                </p>
+    margin-bottom: 12px;
+}
 
-                <p>
-                    Terima kasih sudah hadir dan membuat hari-hari
-                    biasa terasa lebih indah.
-                </p>
+.letter p {
+    font-size: 14px;
 
-                <p>
-                    Aku suka caramu menjadi dirimu sendiri.
-                    Kamu nggak perlu menjadi orang lain untuk terlihat spesial.
-                </p>
+    margin-bottom: 20px;
+}
 
-                <p>
-                    Tetaplah menjadi kamu yang aku kenal,
-                    karena justru itu yang membuat kamu berbeda. ❤️
-                </p>
+.letter strong {
+    color: #d45378;
+}
 
-                <p class="last-message">
-                    Semoga senyum kamu selalu ada,
-                    dan semoga aku bisa menjadi salah satu alasan
-                    di balik senyum kamu. ❤️
-                </p>
 
-            </section>
+/* LIPATAN ATAS */
 
+.flap {
+    position: absolute;
 
-            <!-- TOMBOL ANIMASI -->
-            <div id="animationButtonBox">
+    left: 0;
+    top: 0;
 
-                <button id="kissButton">
-                    🧸💗🐼 Lihat sesuatu yang lucu
-                </button>
+    width: 0;
+    height: 0;
 
-            </div>
+    border-left: 165px solid transparent;
+    border-right: 165px solid transparent;
+    border-top: 115px solid #efabc0;
 
-            <p id="status"></p>
+    transform-origin: top;
 
+    transition:
+        transform 1s ease;
 
-            <!-- AREA PANDA DAN BERUANG -->
-            <section id="characters">
+    z-index: 5;
+}
 
-                <div class="scene-heart">❤️</div>
 
-                <!-- BERUANG -->
-                <div class="character bear">
+/* DEPAN */
 
-                    <div class="ear ear-left"></div>
-                    <div class="ear ear-right"></div>
+.envelope-front {
+    position: absolute;
 
-                    <div class="head">
+    left: 0;
+    bottom: 0;
 
-                        <div class="eye eye-left"></div>
-                        <div class="eye eye-right"></div>
+    width: 0;
+    height: 0;
 
-                        <div class="muzzle"></div>
-                        <div class="nose"></div>
+    border-left: 165px solid transparent;
+    border-right: 165px solid transparent;
+    border-bottom: 120px solid #d97898;
 
-                        <div class="mouth"></div>
+    z-index: 4;
+}
 
-                    </div>
+.envelope.open .flap {
+    transform: rotateX(180deg);
+}
 
-                    <div class="body">
+.envelope.open .letter {
+    transform: translateY(-110px);
+}
 
-                        <div class="belly"></div>
+.click-text {
+    position: absolute;
 
-                    </div>
+    width: 100%;
 
-                    <div class="arm arm-left"></div>
-                    <div class="arm arm-right"></div>
+    bottom: -48px;
 
-                    <div class="leg leg-left"></div>
-                    <div class="leg leg-right"></div>
+    text-align: center;
 
-                </div>
+    color: #c94e73;
 
+    font-weight: bold;
 
-                <!-- PANDA -->
-                <div class="character panda">
+    font-size: 14px;
+}
 
-                    <div class="ear ear-left"></div>
-                    <div class="ear ear-right"></div>
 
-                    <div class="head">
+/* =====================================
+   MAIN
+===================================== */
 
-                        <div class="eye eye-left"></div>
-                        <div class="eye eye-right"></div>
+#main {
+    opacity: 0;
 
-                        <div class="muzzle"></div>
-                        <div class="nose"></div>
+    visibility: hidden;
 
-                        <div class="mouth"></div>
+    transition:
+        opacity 1s ease;
+}
 
-                    </div>
+#main.show {
+    opacity: 1;
 
-                    <div class="body">
+    visibility: visible;
+}
 
-                        <div class="belly"></div>
+.container {
+    width: min(900px, 92%);
 
-                    </div>
+    margin: auto;
 
-                    <div class="arm arm-left"></div>
-                    <div class="arm arm-right"></div>
+    padding:
+        55px 0 70px;
 
-                    <div class="leg leg-left"></div>
-                    <div class="leg leg-right"></div>
+    text-align: center;
+}
 
-                </div>
 
+/* =====================================
+   JUDUL
+===================================== */
 
-                <!-- LOVE SETELAH CIUM -->
-                <div class="kiss-hearts">
+.hero h1 {
+    color: #d45178;
 
-                    <span>❤️</span>
-                    <span>💕</span>
-                    <span>💗</span>
-                    <span>💖</span>
-                    <span>💓</span>
-                    <span>💞</span>
-                    <span>❤️</span>
-                    <span>💕</span>
+    font-size: 36px;
 
-                </div>
+    margin-bottom: 8px;
+}
 
-            </section>
+.hero p {
+    color: #795461;
 
+    font-size: 15px;
+}
 
-            <p class="bottom-text">
-                🧸 Beruang ❤️ Panda 🐼
-            </p>
+.small-heart {
+    color: #e55a81;
 
-        </div>
+    font-size: 22px;
 
-    </main>
+    margin-bottom: 5px;
+}
 
 
-    <script src="script.js"></script>
+/* =====================================
+   FOTO
+===================================== */
 
-</body>
-</html>
+.photo-section {
+    margin-top: 30px;
+}
+
+.photo-area {
+    width: 330px;
+    height: 390px;
+
+    position: relative;
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-frame {
+    width: 245px;
+    height: 315px;
+
+    padding: 8px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 20px 45px rgba(100, 40, 60, .2);
+
+    position: relative;
+
+    z-index: 3;
+
+    transform: rotate(0deg);
+
+    will-change: transform;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+}
+
+
+/* FOTO BERPUTAR */
+
+.photo-frame.spin {
+    animation:
+        photoSpin 1.5s
+        cubic-bezier(.22, .8, .25, 1);
+}
+
+@keyframes photoSpin {
+
+    0% {
+        transform:
+            rotate(0deg)
+            scale(1);
+    }
+
+    35% {
+        transform:
+            rotate(135deg)
+            scale(1.06);
+    }
+
+    70% {
+        transform:
+            rotate(300deg)
+            scale(1.04);
+    }
+
+    100% {
+        transform:
+            rotate(360deg)
+            scale(1);
+    }
+}
+
+
+/* =====================================
+   LOVE FOTO
+===================================== */
+
+.photo-hearts span {
+    position: absolute;
+
+    z-index: 5;
+
+    font-size: 22px;
+
+    animation:
+        floatingHeart 2.7s ease-in-out infinite;
+}
+
+.photo-hearts span:nth-child(1) {
+    left: 18px;
+    top: 65px;
+}
+
+.photo-hearts span:nth-child(2) {
+    right: 15px;
+    top: 105px;
+}
+
+.photo-hearts span:nth-child(3) {
+    left: 5px;
+    bottom: 95px;
+}
+
+.photo-hearts span:nth-child(4) {
+    right: 5px;
+    bottom: 70px;
+}
+
+.photo-hearts span:nth-child(5) {
+    left: 55px;
+    top: 20px;
+}
+
+.photo-hearts span:nth-child(6) {
+    right: 55px;
+    top: 30px;
+}
+
+@keyframes floatingHeart {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-9px)
+            scale(1.12);
+    }
+}
+
+
+/* LOVE KELUAR */
+
+.photo-burst {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 10;
+
+    pointer-events: none;
+}
+
+.photo-burst span {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    opacity: 0;
+
+    font-size: 25px;
+}
+
+.photo-burst.active span {
+    animation:
+        burstHeart 1.3s ease-out forwards;
+}
+
+.photo-burst span:nth-child(1) {
+    --x: -145px;
+    --y: -130px;
+}
+
+.photo-burst span:nth-child(2) {
+    --x: 145px;
+    --y: -120px;
+}
+
+.photo-burst span:nth-child(3) {
+    --x: -160px;
+    --y: 0;
+}
+
+.photo-burst span:nth-child(4) {
+    --x: 160px;
+    --y: 10px;
+}
+
+.photo-burst span:nth-child(5) {
+    --x: -100px;
+    --y: 140px;
+}
+
+.photo-burst span:nth-child(6) {
+    --x: 100px;
+    --y: 140px;
+}
+
+.photo-burst span:nth-child(7) {
+    --x: 0;
+    --y: -165px;
+}
+
+.photo-burst span:nth-child(8) {
+    --x: 0;
+    --y: 160px;
+}
+
+@keyframes burstHeart {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.2);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(1.25);
+    }
+}
+
+
+/* =====================================
+   TOMBOL PUTAR
+===================================== */
+
+.rotate-box {
+    margin-top: -5px;
+}
+
+.rotate-box h2 {
+    font-size: 20px;
+
+    color: #d45178;
+
+    margin-bottom: 8px;
+}
+
+.rotate-box p {
+    font-size: 14px;
+
+    color: #795461;
+
+    margin-bottom: 16px;
+}
+
+button {
+    border: none;
+
+    background: #d9557c;
+
+    color: white;
+
+    padding: 13px 25px;
+
+    border-radius: 30px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(180, 50, 90, .2);
+
+    transition:
+        transform .25s ease,
+        background .25s ease;
+}
+
+button:hover {
+    background: #c94770;
+
+    transform:
+        translateY(-3px);
+}
+
+button:disabled {
+    opacity: .6;
+
+    cursor: wait;
+
+    transform: none;
+}
+
+#photoStatus {
+    display: block;
+
+    min-height: 20px;
+
+    margin-top: 10px;
+
+    color: #d45178;
+
+    font-size: 13px;
+}
+
+
+/* =====================================
+   PESAN
+===================================== */
+
+.message {
+    width: min(650px, 100%);
+
+    margin: 35px auto 0;
+
+    padding: 30px;
+
+    background: rgba(255, 255, 255, .92);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 15px 35px rgba(80, 30, 50, .1);
+
+    opacity: 0;
+
+    transform:
+        translateY(30px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s ease;
+}
+
+.message.show {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+.message-line {
+    width: 45px;
+    height: 3px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 5px;
+
+    background: #e36a8c;
+}
+
+.message h2 {
+    color: #d45178;
+
+    margin-bottom: 18px;
+}
+
+.message p {
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    margin-bottom: 13px;
+}
+
+.last-message {
+    color: #d45178;
+
+    font-weight: bold;
+}
+
+
+/* =====================================
+   TOMBOL ANIMASI
+===================================== */
+
+#animationButtonBox {
+    margin-top: 25px;
+
+    opacity: 0;
+
+    transform:
+        translateY(20px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+#animationButtonBox.show {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+#status {
+    min-height: 24px;
+
+    margin-top: 12px;
+
+    color: #d45178;
+
+    font-weight: bold;
+}
+
+
+/* =====================================
+   AREA KARAKTER
+===================================== */
+
+#characters {
+    width: min(760px, 100%);
+
+    height: 400px;
+
+    margin: 25px auto 0;
+
+    position: relative;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity .7s ease;
+}
+
+#characters.revealed {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+.ground {
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 18px;
+
+    width: 90%;
+
+    height: 18px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background: rgba(190, 100, 130, .12);
+}
+
+
+/* =====================================
+   KARAKTER
+===================================== */
+
+.character {
+    width: 180px;
+    height: 330px;
+
+    position: absolute;
+
+    bottom: 25px;
+
+    transition:
+        transform 2.2s
+        cubic-bezier(.22, .8, .25, 1);
+
+    transform-origin:
+        bottom center;
+}
+
+
+/* POSISI AWAL */
+
+.bear {
+    left: 5%;
+}
+
+.panda {
+    right: 5%;
+}
+
+
+/* =====================================
+   KEPALA
+===================================== */
+
+.head {
+    position: absolute;
+
+    width: 125px;
+    height: 115px;
+
+    left: 27px;
+    top: 10px;
+
+    border-radius: 50%;
+
+    z-index: 5;
+}
+
+.bear .head {
+    background: #aa6948;
+}
+
+.panda .head {
+    background: #f8f8f8;
+
+    border:
+        2px solid #ddd;
+}
+
+
+/* =====================================
+   TELINGA
+===================================== */
+
+.ear {
+    position: absolute;
+
+    width: 45px;
+    height: 45px;
+
+    top: 0;
+
+    border-radius: 50%;
+
+    z-index: 2;
+}
+
+.bear .ear {
+    background: #885137;
+}
+
+.panda .ear {
+    background: #222;
+}
+
+.ear.left {
+    left: 18px;
+}
+
+.ear.right {
+    right: 18px;
+}
+
+
+/* =====================================
+   MATA
+===================================== */
+
+.eye {
+    position: absolute;
+
+    width: 17px;
+    height: 22px;
+
+    top: 43px;
+
+    background: #222;
+
+    border-radius: 50%;
+
+    z-index: 8;
+}
+
+.bear .eye.left {
+    left: 28px;
+}
+
+.bear .eye.right {
+    right: 28px;
+}
+
+.panda .eye {
+    width: 28px;
+    height: 35px;
+
+    top: 37px;
+
+    background: #222;
+
+    transform: rotate(35deg);
+}
+
+.panda .eye.left {
+    left: 20px;
+}
+
+.panda .eye.right {
+    right: 20px;
+
+    transform:
+        rotate(-35deg);
+}
+
+
+/* =====================================
+   MONCONG
+===================================== */
+
+.muzzle {
+    position: absolute;
+
+    width: 43px;
+    height: 32px;
+
+    left: 41px;
+    top: 62px;
+
+    background: #d49778;
+
+    border-radius: 50%;
+}
+
+.panda .muzzle {
+    background: white;
+}
+
+.nose {
+    position: absolute;
+
+    width: 19px;
+    height: 14px;
+
+    left: 53px;
+    top: 66px;
+
+    background: #222;
+
+    border-radius: 50%;
+
+    z-index: 9;
+}
+
+.mouth {
+    position: absolute;
+
+    width: 23px;
+    height: 12px;
+
+    left: 51px;
+    top: 77px;
+
+    border-bottom:
+        3px solid #222;
+
+    border-radius: 50%;
+}
+
+
+/* =====================================
+   BADAN
+===================================== */
+
+.body {
+    position: absolute;
+
+    width: 125px;
+    height: 155px;
+
+    left: 27px;
+    top: 108px;
+
+    border-radius:
+        48% 48% 35% 35%;
+
+    z-index: 3;
+}
+
+.bear .body {
+    background: #aa6948;
+}
+
+.panda .body {
+    background: #f8f8f8;
+
+    border:
+        2px solid #ddd;
+}
+
+.belly {
+    position: absolute;
+
+    width: 72px;
+    height: 90px;
+
+    left: 26px;
+    top: 33px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.2);
+}
+
+.panda .belly {
+    background: #ededed;
+}
+
+
+/* =====================================
+   TANGAN
+===================================== */
+
+.arm {
+    position: absolute;
+
+    width: 42px;
+    height: 105px;
+
+    top: 125px;
+
+    border-radius: 30px;
+
+    z-index: 2;
+
+    transition:
+        transform 1.5s
+        cubic-bezier(.25,.8,.25,1);
+}
+
+.bear .arm {
+    background: #aa6948;
+}
+
+.panda .arm {
+    background: #222;
+}
+
+.arm.left {
+    left: 3px;
+
+    transform:
+        rotate(24deg);
+}
+
+.arm.right {
+    right: 3px;
+
+    transform:
+        rotate(-24deg);
+}
+
+
+/* =====================================
+   KAKI
+===================================== */
+
+.leg {
+    position: absolute;
+
+    width: 47px;
+    height: 78px;
+
+    bottom: 0;
+
+    border-radius: 30px;
+
+    z-index: 1;
+}
+
+.bear .leg {
+    background: #aa6948;
+}
+
+.panda .leg {
+    background: #222;
+}
+
+.leg.left {
+    left: 28px;
+}
+
+.leg.right {
+    right: 28px;
+}
+
+
+/* =====================================
+   MENDEKAT
+===================================== */
+
+#characters.kissing .bear {
+    transform:
+        translateX(175px)
+        rotate(-3deg);
+}
+
+#characters.kissing .panda {
+    transform:
+        translateX(-175px)
+        rotate(3deg);
+}
+
+
+/* TANGAN */
+
+#characters.kissing .bear .arm.right {
+    transform:
+        rotate(-65deg);
+}
+
+#characters.kissing .panda .arm.left {
+    transform:
+        rotate(65deg);
+}
+
+
+/* =====================================
+   HATI TENGAH
+===================================== */
+
+.middle-heart {
+    position: absolute;
+
+    left: 50%;
+    top: 55px;
+
+    transform:
+        translateX(-50%)
+        scale(0);
+
+    font-size: 45px;
+
+    z-index: 20;
+}
+
+#characters.kissing .middle-heart {
+    animation:
+        heartPop .8s
+        1.5s ease forwards;
+}
+
+@keyframes heartPop {
+
+    0% {
+        transform:
+            translateX(-50%)
+            scale(0);
+    }
+
+    50% {
+        transform:
+            translateX(-50%)
+            scale(1.35);
+    }
+
+    100% {
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+}
+
+
+/* =====================================
+   LOVE BERTERBANGAN
+===================================== */
+
+.kiss-hearts {
+    position: absolute;
+
+    left: 50%;
+    top: 48%;
+
+    z-index: 30;
+
+    pointer-events: none;
+}
+
+.kiss-hearts span {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    opacity: 0;
+
+    font-size: 26px;
+}
+
+#characters.kissing .kiss-hearts span {
+    animation:
+        flyHeart 1.5s
+        2s ease-out forwards;
+}
+
+.kiss-hearts span:nth-child(1) {
+    --x: -190px;
+    --y: -100px;
+}
+
+.kiss-hearts span:nth-child(2) {
+    --x: 190px;
+    --y: -100px;
+}
+
+.kiss-hearts span:nth-child(3) {
+    --x: -210px;
+    --y: 15px;
+}
+
+.kiss-hearts span:nth-child(4) {
+    --x: 210px;
+    --y: 15px;
+}
+
+.kiss-hearts span:nth-child(5) {
+    --x: -130px;
+    --y: 130px;
+}
+
+.kiss-hearts span:nth-child(6) {
+    --x: 130px;
+    --y: 130px;
+}
+
+.kiss-hearts span:nth-child(7) {
+    --x: -25px;
+    --y: -170px;
+}
+
+.kiss-hearts span:nth-child(8) {
+    --x: 25px;
+    --y: -170px;
+}
+
+@keyframes flyHeart {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(0,0)
+            scale(.2);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(var(--x), var(--y))
+            scale(1.25);
+    }
+}
+
+
+/* =====================================
+   BAWAH
+===================================== */
+
+.bottom-text {
+    color: #d45178;
+
+    font-size: 14px;
+
+    margin-top: 5px;
+}
+
+
+/* =====================================
+   HP
+===================================== */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 92%;
+
+        padding-top: 40px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .photo-area {
+        transform: scale(.88);
+
+        margin-top: -10px;
+
+        margin-bottom: -25px;
+    }
+
+    .message {
+        padding: 22px 18px;
+    }
+
+    .message p {
+        font-size: 14px;
+    }
+
+    #characters {
+        height: 340px;
+    }
+
+    .character {
+        transform:
+            scale(.75);
+
+        transform-origin:
+            bottom center;
+    }
+
+    .bear {
+        left: -5%;
+    }
+
+    .panda {
+        right: -5%;
+    }
+
+    #characters.kissing .bear {
+        transform:
+            translateX(105px)
+            scale(.75)
+            rotate(-3deg);
+    }
+
+    #characters.kissing .panda {
+        transform:
+            translateX(-105px)
+            scale(.75)
+            rotate(3deg);
+    }
+
+    .kiss-hearts span:nth-child(1) {
+        --x: -120px;
+        --y: -90px;
+    }
+
+    .kiss-hearts span:nth-child(2) {
+        --x: 120px;
+        --y: -90px;
+    }
+
+    .kiss-hearts span:nth-child(3) {
+        --x: -140px;
+        --y: 10px;
+    }
+
+    .kiss-hearts span:nth-child(4) {
+        --x: 140px;
+        --y: 10px;
+    }
+}
