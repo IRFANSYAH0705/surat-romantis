@@ -1,24 +1,47 @@
-const envelope = document.getElementById("envelope");
-const letterScreen = document.getElementById("letterScreen");
-const main = document.getElementById("main");
+const envelope =
+    document.getElementById("envelope");
 
-const kissButton = document.getElementById("kissButton");
-const characters = document.getElementById("characters");
-const statusText = document.getElementById("status");
+const letterScreen =
+    document.getElementById("letterScreen");
+
+const main =
+    document.getElementById("main");
+
+const kissButton =
+    document.getElementById("kissButton");
+
+const characters =
+    document.getElementById("characters");
+
+const statusText =
+    document.getElementById("status");
 
 
-// =========================
-// MEMBUKA SURAT
-// =========================
+let sudahDibuka = false;
+let sedangAnimasi = false;
+
+
+/* =====================
+   BUKA SURAT
+===================== */
 
 function openLetter() {
 
+    if (sudahDibuka) {
+        return;
+    }
+
+    sudahDibuka = true;
+
     envelope.classList.add("open");
+
 
     setTimeout(function () {
 
         letterScreen.style.opacity = "0";
-        letterScreen.style.visibility = "hidden";
+
+        letterScreen.style.visibility =
+            "hidden";
 
         main.classList.add("show");
 
@@ -26,116 +49,102 @@ function openLetter() {
 }
 
 
-// Klik amplop
-envelope.addEventListener("click", openLetter);
+envelope.addEventListener(
+    "click",
+    openLetter
+);
 
 
-// Bisa dibuka menggunakan Enter atau Space
-envelope.addEventListener("keydown", function(event) {
+/* =====================
+   ANIMASI CIUMAN
+===================== */
 
-    if (event.key === "Enter" || event.key === " ") {
+kissButton.addEventListener(
+    "click",
+    function () {
 
-        event.preventDefault();
+        if (sedangAnimasi) {
+            return;
+        }
 
-        openLetter();
-    }
-});
-
-
-// =========================
-// ANIMASI PANDA + BERUANG
-// =========================
-
-let sedangBerjalan = false;
-
-kissButton.addEventListener("click", function() {
-
-    // Supaya tombol tidak bisa diklik berkali-kali
-    if (sedangBerjalan) {
-        return;
-    }
-
-    sedangBerjalan = true;
+        sedangAnimasi = true;
 
 
-    // Panda dan beruang mulai muncul
-    characters.classList.add("revealed");
-
-    // Bersihkan animasi sebelumnya
-    characters.classList.remove("kissing");
-
-    // Memaksa browser membaca ulang animasi
-    void characters.offsetWidth;
+        /* Panda dan beruang muncul */
+        characters.classList.add(
+            "revealed"
+        );
 
 
-    kissButton.disabled = true;
+        /* Reset animasi */
+        characters.classList.remove(
+            "kissing"
+        );
 
-    kissButton.textContent =
-        "🧸🐼 Bersiap... ❤️";
-
-    statusText.textContent =
-        "Mereka mulai mendekat... 🥰";
+        void characters.offsetWidth;
 
 
-    // =========================
-    // MULAI MENDEKAT
-    // =========================
-
-    setTimeout(function() {
-
-        characters.classList.add("kissing");
+        kissButton.disabled = true;
 
         kissButton.textContent =
-            "💋 Mereka sedang berciuman...";
+            "🧸🐼 Bersiap... ❤️";
 
         statusText.textContent =
-            "Pelan-pelan mendekat... 💗";
-
-    }, 650);
+            "Mereka mulai mendekat... 🥰";
 
 
-    // =========================
-    // SAAT CIUMAN
-    // =========================
+        /* Mulai mendekat */
+        setTimeout(function () {
 
-    setTimeout(function() {
+            characters.classList.add(
+                "kissing"
+            );
 
-        statusText.textContent =
-            "Muachhh! 💋❤️";
+            kissButton.textContent =
+                "💋 Mereka berciuman...";
 
-    }, 1550);
+            statusText.textContent =
+                "Pelan-pelan mendekat... 💗";
 
-
-    // =========================
-    // LOVE MUNCUL
-    // =========================
-
-    setTimeout(function() {
-
-        statusText.textContent =
-            "❤️💕💗 Love berhamburan!";
-
-    }, 2050);
+        }, 650);
 
 
-    // =========================
-    // SELESAI
-    // =========================
+        /* Ciuman */
+        setTimeout(function () {
 
-    setTimeout(function() {
+            statusText.textContent =
+                "Muachhh! 💋❤️";
 
-        characters.classList.remove("kissing");
+        }, 1600);
 
-        statusText.textContent =
-            "Selesai 🥰 Klik lagi untuk mengulang.";
 
-        kissButton.disabled = false;
+        /* Love */
+        setTimeout(function () {
 
-        kissButton.textContent =
-            "🧸💗🐼 Klik lagi untuk mengulang";
+            statusText.textContent =
+                "❤️💕💗 Love berhamburan!";
 
-        sedangBerjalan = false;
+        }, 2100);
 
-    }, 3500);
 
-});
+        /* Selesai */
+        setTimeout(function () {
+
+            characters.classList.remove(
+                "kissing"
+            );
+
+            statusText.textContent =
+                "Selesai 🥰";
+
+            kissButton.disabled = false;
+
+            kissButton.textContent =
+                "🧸💗🐼 Klik lagi";
+
+            sedangAnimasi = false;
+
+        }, 3600);
+
+    }
+);
