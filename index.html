@@ -1,82 +1,103 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Untuk Kamu ❤️</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
     <!-- SURAT -->
-    <div id="letterScreen">
-
+    <section id="letterScreen">
         <div class="envelope" id="envelope">
-
             <div class="env-body"></div>
 
             <div class="letter">
                 <h2>Untuk Kamu ❤️</h2>
-
-                <p>
-                    Ada sesuatu kecil yang ingin aku sampaikan...
-                </p>
-
-                <b>💌 Buka suratnya 💌</b>
+                <p>Ada sesuatu yang ingin aku sampaikan...</p>
+                <b>💌 Buka suratnya</b>
             </div>
 
+            <div class="env-flap"></div>
             <div class="env-left"></div>
             <div class="env-right"></div>
-            <div class="env-flap"></div>
 
-            <div class="open-text">
-                Klik suratnya ❤️
-            </div>
-
+            <div class="open-text">Klik suratnya ❤️</div>
         </div>
+    </section>
 
-    </div>
 
-
-    <!-- HALAMAN UTAMA -->
+    <!-- ISI WEBSITE -->
     <main id="main">
-
         <div class="container">
 
             <h1>Untuk Kamu ❤️</h1>
-
             <p class="subtitle">
-                Ada seseorang yang ingin menyampaikan sesuatu kepadamu...
+                Ada sesuatu kecil yang ingin aku sampaikan kepadamu...
             </p>
 
 
             <!-- FOTO -->
-            <div class="photo-box">
+            <div class="photo-area" id="photoArea">
 
-                <img
-                    src="foto-dia.jpeg"
-                    alt="Foto orang spesial"
-                >
+                <div class="photo-frame" id="photoFrame">
+                    <img src="foto-dia.jpeg" alt="Foto orang spesial">
+                </div>
 
-                <span class="heart heart1">❤️</span>
-                <span class="heart heart2">💕</span>
-                <span class="heart heart3">💗</span>
+                <!-- LOVE DI SEKITAR FOTO -->
+                <div class="photo-hearts">
+                    <span>❤️</span>
+                    <span>💕</span>
+                    <span>💗</span>
+                    <span>💖</span>
+                    <span>💓</span>
+                    <span>💞</span>
+                </div>
+
+                <!-- LOVE SAAT FOTO DIPUTAR -->
+                <div class="photo-burst" id="photoBurst">
+                    <span>❤️</span>
+                    <span>💕</span>
+                    <span>💗</span>
+                    <span>💖</span>
+                    <span>💓</span>
+                    <span>💞</span>
+                    <span>❤️</span>
+                    <span>💕</span>
+                </div>
+
+            </div>
+
+
+            <!-- PERINTAH PUTAR FOTO -->
+            <div class="rotate-box" id="rotateBox">
+
+                <p class="rotate-title">
+                    💕 Coba putar fotonya dulu... 💕
+                </p>
+
+                <p class="rotate-subtitle">
+                    Tekan tombol di bawah dan lihat apa yang terjadi ❤️
+                </p>
+
+                <button id="rotatePhotoButton">
+                    🔄 Putar Foto
+                </button>
+
+                <p id="photoStatus"></p>
 
             </div>
 
 
             <!-- KATA-KATA -->
-            <div class="message">
+            <div id="message" class="message">
 
-                <h2>💌 Untuk seseorang yang spesial</h2>
+                <h2>💌 Untuk Kamu</h2>
 
                 <p>
                     Aku mungkin nggak selalu pandai merangkai kata,
-                    tapi aku ingin kamu tahu satu hal.
+                    tapi ada satu hal yang ingin aku sampaikan.
                 </p>
 
                 <p>
@@ -86,13 +107,12 @@
 
                 <p>
                     Aku suka caramu menjadi dirimu sendiri.
-                    Jadi jangan pernah merasa harus berubah
-                    hanya supaya disukai seseorang.
+                    Kamu nggak perlu menjadi orang lain untuk terlihat spesial.
                 </p>
 
                 <p>
-                    Tetap jadi kamu yang aku kenal,
-                    karena justru itu yang membuat kamu spesial. ❤️
+                    Tetaplah menjadi kamu yang aku kenal,
+                    karena justru itu yang membuat kamu berbeda. ❤️
                 </p>
 
                 <p class="last-message">
@@ -104,76 +124,53 @@
             </div>
 
 
-            <!-- TOMBOL -->
-            <button
-                id="kissButton"
-                class="kiss-button"
-            >
-                🧸💗🐼 Klik di sini
-            </button>
+            <!-- TOMBOL ANIMASI -->
+            <div id="animationButtonBox">
 
-            <div id="status"></div>
+                <button id="kissButton">
+                    🧸💗🐼 Klik untuk melihat sesuatu
+                </button>
 
+            </div>
 
-            <!-- ANIMASI BONEKA -->
-            <div id="characters" class="characters">
-
-                <!-- LOVE TENGAH -->
-                <div class="big-love">
-                    ❤️
-                </div>
+            <p id="status"></p>
 
 
-                <!-- LOVE TERBANG -->
+            <!-- ANIMASI PANDA DAN BERUANG -->
+            <div id="characters">
+
+                <div class="big-love">❤️</div>
+
                 <div class="love-burst">
-
                     <span>❤️</span>
                     <span>💗</span>
                     <span>💕</span>
                     <span>💖</span>
                     <span>💓</span>
                     <span>💞</span>
-                    <span>❤️</span>
-
                 </div>
 
 
                 <!-- BERUANG -->
                 <div class="character bear">
 
+                    <div class="ear left"></div>
+                    <div class="ear right"></div>
+
                     <div class="head">
-
-                        <div class="ear left"></div>
-                        <div class="ear right"></div>
-
                         <div class="eye left"></div>
                         <div class="eye right"></div>
-
-                        <div class="muzzle"></div>
-
                         <div class="nose"></div>
-
                         <div class="mouth"></div>
-
                     </div>
 
-
-                    <div class="body">
-
-                        <div class="belly"></div>
-
-                    </div>
-
+                    <div class="body"></div>
 
                     <div class="arm left"></div>
                     <div class="arm right"></div>
 
                     <div class="leg left"></div>
                     <div class="leg right"></div>
-
-                    <div class="kiss">
-                        💋
-                    </div>
 
                 </div>
 
@@ -181,29 +178,20 @@
                 <!-- PANDA -->
                 <div class="character panda">
 
-                    <div class="head">
+                    <div class="ear left"></div>
+                    <div class="ear right"></div>
 
-                        <div class="ear left"></div>
-                        <div class="ear right"></div>
+                    <div class="head">
 
                         <div class="eye left"></div>
                         <div class="eye right"></div>
 
-                        <div class="muzzle"></div>
-
                         <div class="nose"></div>
-
                         <div class="mouth"></div>
 
                     </div>
 
-
-                    <div class="body">
-
-                        <div class="belly"></div>
-
-                    </div>
-
+                    <div class="body"></div>
 
                     <div class="arm left"></div>
                     <div class="arm right"></div>
@@ -211,26 +199,20 @@
                     <div class="leg left"></div>
                     <div class="leg right"></div>
 
-                    <div class="kiss">
-                        💋
-                    </div>
-
                 </div>
 
             </div>
 
 
             <p class="bottom-text">
-                🧸 Beruang &nbsp; ❤️ &nbsp; 🐼 Panda
+                🧸 Beruang ❤️ Panda 🐼
             </p>
 
         </div>
-
     </main>
 
 
     <script src="script.js"></script>
 
 </body>
-
 </html>
